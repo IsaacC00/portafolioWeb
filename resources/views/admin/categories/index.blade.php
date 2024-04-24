@@ -1,7 +1,7 @@
 @extends('layouts.back')
 
 @section('cuerpo')
-    <h1 class="text-4xl font-bold"> Lista de Categorias</h1>
+    <h1 class="text-4xl font-bold"> Lista de Categorías</h1>
 
     @if (session('info'))
     <div class="bg-green-600 rounded-lg my-3 sm:w-6/12 lg:w-4/12">
@@ -10,24 +10,24 @@
 @endif
 
     <div class="my-6">
-        <a href="{{route('admin.categories.create')}}" class="bg-purple-600 rounded-md text-sm text-white p-2.5">
-            Agregar Categoria
+        <a href="{{route('admin.categories.create')}}" class="bg-purple-600 rounded-md text-sm text-white p-2.5 font-bold">
+            Agregar Categorías
         </a>
     </div>
     {{-- crud--}}
 
 <div class=" overflow-x-auto my-8">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 font-semibold">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-5">
                     ID
                 </th>
                 <th scope="col" class="px-6 py-5">
-                    Categorias
+                    Categorías
                 </th>
                 <th scope="col" class="px-6 py-5">
-                    Fecha de Creacion
+                    Fecha de Creación
                 </th>
                 <th scope="col" class="px-6 py-5">
                     Acciones
@@ -52,7 +52,7 @@
                 </td>
 
                 <td class="px-6 py-4 space-x-4 flex items-center">
-                    <a href="{{route('admin.categories.edit',$row->id)}}" class="text-gray-800">Editar</a>
+                    <a href="{{route('admin.categories.edit',$row->id)}}" class="text-blue-800">Editar</a>
                     {{-- delete--}}
                     <form action="{{route('admin.categories.destroy',$row)}}" method="POST" >
                         

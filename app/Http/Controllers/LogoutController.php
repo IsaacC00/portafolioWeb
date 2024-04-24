@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 class LogoutController extends Controller
 {
     public function store() {
+        
         auth()->logout();
 
-        return view('auth.login');
+        return redirect()->route('login');
     }
 }

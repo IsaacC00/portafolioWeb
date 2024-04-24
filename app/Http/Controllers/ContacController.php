@@ -12,11 +12,12 @@ class ContacController extends Controller
     {
         $data = request()->validate([
             'nombre'=>'required|min:3|max:38',
-            'telefono'=>'required|numeric|min:10',
+            'telefono'=>'required|numeric',
             'mensaje'=>'required|min:5',
         ]);
         //recibe el email
         Mail::to('isaacpasquel1974@gmail.com')->send( new ContactUs($data));
        
+        return back()->with('info', 'Mensaje enviado con éxito');
     }
 }

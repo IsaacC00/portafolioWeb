@@ -4,11 +4,12 @@ use App\Http\Controllers\BackController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContacController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestimonialController;
@@ -31,14 +32,15 @@ Route::post('/login',[LoginController::class,'store']);
 
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
-/**Post */
-Route::get('/',[PostController::class,'home'])->name('posts.home');
+/**Home */
+Route::get('/',[HomeController::class,'home'])->name('home.index');
 //habilitar index
-Route::get('posts/index',[PostController::class,'index'])->name('posts.index');
+Route::get('home/index',[HomeController::class,'index'])->name('home.post');
 
-Route::get('posts/{post}',[PostController::class,'show'])->name('posts.show');
+Route::get('home/{post}',[HomeController::class,'show'])->name('home.show');
 
-Route::get('category/{category}',[PostController::class,'category'])->name('posts.category');
+Route::get('category/{category}',[HomeController::class,'category'])->name('home.category');
+/**Home */
 
 /** CRUDS */
 
@@ -56,13 +58,17 @@ Route::resource('testimonials',TestimonialController::class)->names('admin.testi
 Route::resource('certificates', CertificateController::class)->names('admin.certificates');
 // certificates
 
-/** projects*/
-Route::resource('portfolio',PortfolioController::class)->names('admin.portfolio');
-/** projects*/
+//portafolio
+Route::resource('posts', PostController::class)->names('admin.posts');
+//portafolio
 
 // Informacion Usuario
 Route::resource('user',InformationController::class)->names('admin.user');
 // Informacion Usuario
+
+// Eliminar Imagen
+Route::get('/image/delete/{id}', [ImageController::class, 'deleteImage'])->name('image.delete');
+// Eliminar Imagen
 
 Route::get('/user-edit',[PerfilController::class,('index')])->name('admin.user');
 Route::post('/user-edit',[PerfilController::class,('store')])->name('user.edit');

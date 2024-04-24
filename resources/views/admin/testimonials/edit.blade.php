@@ -51,7 +51,7 @@
                 rounded-lg text-sm p-2 text-center">{{$message}}</p>
     @enderror
 
-    {!! Form::submit('Actualizar Testimonio', ['class'=>'bg-purple-600 rounded-md text-sm text-white p-2 cursor-pointer'])!!}
+    {!! Form::submit('Actualizar Testimonio', ['class'=>'font-bold bg-purple-600 rounded-md text-sm text-white p-2 cursor-pointer'])!!}
     {!! Form::close() !!}
 </div>
 

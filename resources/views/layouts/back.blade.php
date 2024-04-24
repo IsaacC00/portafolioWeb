@@ -8,7 +8,7 @@
     <title>Aplicacion Web</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
     @vite('resources/css/app.css')
-
+    @vite('resources/js/menu.js')
 </head>
 
 <body>
@@ -51,7 +51,7 @@
             <nav>
                 <h1 class="text-base block py-0 px-4 uppercase font-bold">Administrador</h1>
 
-                <a href="{{route('posts.home')}}" class="block py-2.5 px-4 flex items-center space-x-2 hover:bg-gray-700 rounded-md
+                <a href="{{route('home.index')}}" class="block py-2.5 px-4 flex items-center space-x-2 hover:bg-gray-700 rounded-md
                 transition duration-200 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -81,12 +81,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
                     </svg>
-                    <span>Categorias</span>
+                    <span>Categorías</span>
                 </a>
 
                 <h1 class="text-base block pt-8 pb-0 px-4 uppercase font-bold">opciones portafolio</h1>
 
-                <a href="{{route('admin.portfolio.index')}}" class="block py-2.5 px-4 flex items-center space-x-2 hover:bg-gray-700  rounded-md
+                <a href="{{route('admin.posts.index')}}" class="block py-2.5 px-4 flex items-center space-x-2 hover:bg-gray-700  rounded-md
                 transition duration-200 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
@@ -148,7 +148,7 @@
                                     d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
                             </svg>
 
-                            <p>Cerrar Sesion</p>
+                            <p>Cerrar Sesión</p>
                         </button>
                     </form>
 
@@ -156,25 +156,15 @@
                 {{-- Usuario --}}
             </nav>
         </div>
-        <div class="p-10 text-2xl font-bold flex-1 bg-gray-200">
+        <div class="p-10 font-normal flex-1 min-h-screen bg-gray-200">
             {{-- contenido --}}
             @yield('cuerpo')
             {{-- contenido --}}
         </div>
 
-        <script>
-            const btn = document.querySelector(".mobile-menu");
-            const sidebar = document.querySelector(".sidebar");
-
-            btn.addEventListener( "click",()=> {
-                sidebar.classList.toggle("-translate-x-full");
-            });
-        </script>
-
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
-
     </div>
 
+    @stack('js')
 </body>
 
 </html>

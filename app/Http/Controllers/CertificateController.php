@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class CertificateController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $certificates = Certificate::all();
+        $certificates = Certificate::paginate(4);
         return view('admin.certificates.index',compact('certificates'));
     }
 
@@ -37,7 +41,7 @@ class CertificateController extends Controller
         ]);
         // dd($request);
         $new = Certificate::create($request->all());
-        return redirect()->route('admin.certificates.edit',$new)->with('info','Certificado creado con exito');
+        return redirect()->route('admin.certificates.edit',$new)->with('info','Certificado creado con éxito');
     }
 
     /**
@@ -70,7 +74,7 @@ class CertificateController extends Controller
         ]);
         // dd($request);
         $certificate->update($request->all());
-        return redirect()->route('admin.certificates.edit',$certificate)->with('info','Datos actualizados con exito');
+        return redirect()->route('admin.certificates.edit',$certificate)->with('info','Datos actualizados con éxito');
     }
 
     /**
@@ -79,6 +83,6 @@ class CertificateController extends Controller
     public function destroy(Certificate $certificate)
     {
         $certificate->delete();
-        return redirect()->route('admin.certificates.index')->with('info','Datos actualizados con exito');
+        return redirect()->route('admin.certificates.index')->with('info','Datos actualizados con éxito');
     }
 }

@@ -1,7 +1,7 @@
 @props(['information'])
 <div class="my-6">
     @forelse ($information as $row)
-    <div>
+    <div class="overflow-x-auto my-8">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -38,7 +38,7 @@
                             <img src="{{ asset('perfiles').'/'.$info->imagen }}"  width="30">
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{route('admin.user.edit',$info->id)}}" class="text-gray-800">Editar</a>
+                            <a href="{{route('admin.user.edit',$info->id)}}" class="text-blue-800">Editar</a>
                         </td>
                     </tr>
                 @empty

@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    @vite('resources/js/swiper.js')
-
 
     <style>
         .swiper {
@@ -26,7 +24,7 @@
         <x-navegacion />
     </header>
 
-    <div class=" ">
+    <div class="min-h-screen">
 
         @yield('contenedor')
 

@@ -17,7 +17,7 @@
         <livewire:nav-category />
     </header>
 
-    <div class="">
+    <div class="min-h-screen">
 
         @yield('contenedor')
 

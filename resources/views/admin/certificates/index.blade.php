@@ -10,14 +10,14 @@
 @endif
 
 <div class="my-6">
-    <a href="{{route('admin.certificates.create')}}" class="bg-purple-600 rounded-md text-sm text-white p-2.5">
+    <a href="{{route('admin.certificates.create')}}" class="font-bold bg-purple-600 rounded-md text-sm text-white p-2.5">
         Agregar Certificado
     </a>
 </div>
 {{-- crud--}}
 
 <div class=" overflow-x-auto my-8">
-<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 font-semibold">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             
@@ -49,11 +49,11 @@
             </td>
 
             <th scope="row" class="px-6 py-4">
-                {{$row->fecha_certificado}}
+                {{$row->fecha_certificado->format('Y/m/d')}}
             </th>
 
             <td class="px-6 py-4 space-x-4 flex items-center">
-                <a href="{{route('admin.certificates.edit',$row->id)}}" class="text-gray-800">Editar</a>
+                <a href="{{route('admin.certificates.edit',$row->id)}}" class="text-blue-800">Editar</a>
                 {{-- delete--}}
                 <form action="{{route('admin.certificates.destroy',$row->id)}}" method="POST" >
                     
@@ -88,5 +88,9 @@
 </div>
 
 {{-- crud--}}
+
+<div class="mx-5 my-4 relative ">
+    {{$certificates->links()}}
+</div>
 
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Information;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class InformationController extends Controller
 {
@@ -29,7 +30,8 @@ class InformationController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+
         $request->validate([
             'telefono'=>'required|numeric',
             'email'=>'required|email',
@@ -44,7 +46,7 @@ class InformationController extends Controller
         $imagenServidor->fit(1000,1000);   
 
         $imagenServidor->save(public_path('perfiles').'/'.$nombreImagen);
-            
+
         $information = new Information();
         $information->telefono = $request->telefono;
         $information->email = $request->email;
@@ -52,7 +54,7 @@ class InformationController extends Controller
         $information->imagen = $nombreImagen; // Guardar ruta de la imagen
         $information->save();
 
-        return redirect()->route('admin.user')->with('info','Informacion agregada con exito');
+        return redirect()->route('admin.user')->with('info','Información agregada con éxito');
     }
 
     /**
@@ -83,6 +85,7 @@ class InformationController extends Controller
             'imagen' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:1024', // Cambio a 'sometimes'
         ]);
         if ($request->hasFile('imagen')) {
+
             $imagen = $request->file('imagen');
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
 
@@ -90,10 +93,12 @@ class InformationController extends Controller
             $imagenServidor->fit(1000, 1000);
 
             $imagenServidor->save(public_path('perfiles').'/'.$nombreImagen);
-    
+            
+            $imagePath = public_path('perfiles').'/'. $user->imagen;
+
             // Si es necesario, elimina la imagen anterior
-            if ($user->imagen && file_exists(public_path($user->imagen))) {
-                unlink(public_path($user->imagen));
+            if ($user->imagen && File::exists($imagePath)) {
+                File::delete($imagePath);
             }
     
             // Actualizar la ruta de la imagen solo si se sube una nueva
@@ -107,7 +112,7 @@ class InformationController extends Controller
         
         $user->save();
     
-        return redirect()->route('admin.user')->with('info','Informacion editada con exito');
+        return redirect()->route('admin.user')->with('info','Información editada con éxito');
     }
 
     /**

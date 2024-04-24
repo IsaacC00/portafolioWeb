@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         
-        // $this->call(UserSeeder::class);
-        // Category::factory(4)->create();
+        $this->call(UserSeeder::class);
+        Category::factory(4)->create();
         Certificate::factory(10)->create();
         Testimonial::factory(10)->create();
-        // $this->call(PostSeeder::class);
+        $this->call(PostSeeder::class);
 
     }
 }

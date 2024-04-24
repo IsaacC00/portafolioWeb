@@ -19,20 +19,26 @@ class ImageFactory extends Factory
      * @return array<string, mixed>
      */
 
-    protected $model=Image::class;
+    protected $model = Image::class;
 
     public function definition(): array
     {
         $faker = \Faker\Factory::create();
 
-        $imageContent = file_get_contents($faker->imageUrl(400, 300));
-        $imageName = 'public/' . uniqid() . '.jpg';
+        $imageContent = file_get_contents($faker->imageUrl(1000, 1000));
+        $imageName = 'projects/' . uniqid() . '.jpg';
 
-        Storage::put($imageName, $imageContent);
+        // Asegúrate de que la carpeta `projects` exista o créala
+        $directory = public_path('projects');
+        if (!file_exists($directory)) {
+            mkdir($directory, 0755, true);
+        }
 
+        // Utiliza file_put_contents para guardar el archivo en la carpeta public
+        file_put_contents(public_path($imageName), $imageContent);
+        
         return [
             'image_path' => $imageName,
         ];
     }
-
 }

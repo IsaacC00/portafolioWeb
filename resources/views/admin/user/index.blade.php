@@ -14,9 +14,9 @@
     </div>
     @endif
     
-    <div class=" bg-white p-6 rounded-lg shadow-xl">
+    <div class=" bg-white p-6 rounded-lg shadow-xl font-bold text-2xl">
         
-        <h1>Editar informacion del perfil: {{auth()->user()->name}}</h1>
+        <h1>Editar información del perfil: {{auth()->user()->name}}</h1>
 
         <div>
             <x-informacion :information="$information"/>

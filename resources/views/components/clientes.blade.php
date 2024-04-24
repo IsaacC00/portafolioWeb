@@ -55,10 +55,10 @@
     </div>
     <!-- Indicators -->
     <div class="flex items-center justify-center gap-2 pt-6" data-glide-el="controls[nav]">
-        @forelse ($testimonios as $row)
-            <button class="p-4 group" data-glide-dir="={{$row->id}}" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full opacity-70 ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
+        @forelse ($testimonios as $index => $row)
+            <button class="p-4 group" data-glide-dir="={{$index}}" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full opacity-70 ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
         @empty
-            <p>No hay informacion</p>
+            <p>No hay información</p>
         @endforelse
         
     </div>

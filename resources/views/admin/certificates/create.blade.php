@@ -12,7 +12,7 @@
 
         {!! Form::open(['route'=>'admin.certificates.store']) !!}
             <div class="my-2">
-                {!! Form::label('desc_certificado', 'Descripcion certificado',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
+                {!! Form::label('desc_certificado', 'Descripción del certificado',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
                 {!! Form::textarea('desc_certificado', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg h-24 font-normal']) !!}
             </div>
             @error('desc_certificado')
@@ -48,7 +48,7 @@
             rounded-lg text-sm p-2 text-center">{{$message}}</p>
             @enderror
 
-            {!! Form::submit('Crear Certificado', ['class'=>'bg-purple-600 rounded-md text-sm text-white p-2.5 cursor-pointer']) !!}
+            {!! Form::submit('Crear Certificado', ['class'=>'font-bold bg-purple-600 rounded-md text-sm text-white p-2.5 cursor-pointer']) !!}
         {!! Form::close() !!}
     </div>
 

@@ -4,10 +4,17 @@
         <p class="lg:w-2/3 mx-auto text-slate-200 leading-relaxed text-base">Entendemos la importancia de crear espacios
             que reflejen la visión y las necesidades únicas de cada cliente.</p>
     </div>
+    
+    @if (session('info'))
+    <div class="bg-green-600 rounded-lg my-3 sm:w-6/12 lg:w-4/12 mx-auto ">
+        <h1 class="text-white text-base font-semibold p-2 text-center">{{session('info')}}</h1>
+    </div>
+    @endif
+
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="bg-zinc-900 bg-opacity-40 p-6 rounded-lg h-full flex items-start">
 
-            <form action="{{route('contac.send')}}" method="POST" class="flex flex-wrap -m-2">
+            <form action="{{route('contac.send')}}" method="POST" class="flex flex-wrap -m-2" autocomplete="off">
                 @csrf
                 <div class="p-2 w-1/2">
                     <label for="nombre" class="leading-7 text-sm text-slate-200 uppercase">Nombre</label>
@@ -15,31 +22,37 @@
                     id="nombre"
                     name="nombre"
                         class="w-full bg-secondary-600 bg-opacity-40 rounded border border-slate-800 text-base outline-none py-1 px-3 leading-8 "
-                        type="text">
+                        type="text"
+                        value="{{ old('nombre') }}"
+                        >
+                        
                     @error('nombre')
                         <span class="text-red-500 font-semibold">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="p-2 w-1/2">
-                    <label for="telefono" class="leading-7 text-sm text-slate-200 uppercase">Telefono</label>
+                    <label for="telefono" class="leading-7 text-sm text-slate-200 uppercase">Teléfono</label>
                     <input
                     id="telefono"
                     name="telefono"
-                        class="w-full bg-secondary-600 rounded border border-slate-800 text-base outline-none py-1 px-3 leading-8"
-                        type="text">
+                    class="w-full bg-secondary-600 rounded border border-slate-800 text-base outline-none py-1 px-3 leading-8"
+                    type="text"
+                    value="{{ old('telefono') }}"
+                        >
                         @error('telefono')
                         <span class="text-red-500 font-semibold">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="p-2 w-full">
+                    
                     <div class="relative">
                         <label for="mensaje" class="leading-7 text-sm text-slate-200 uppercase">Asunto</label>
-                        <textarea name="mensaje" id="mensaje"
-                            class="w-full rounded border border-slate-800 h-32 text-base outline-none py-1 px-3 resize-none leading-6"></textarea>
+                        <textarea name="mensaje" id="mensaje" class="w-full rounded border border-slate-800 h-32 text-base outline-none py-1 px-3 resize-none leading-6">{{ old('mensaje') }}</textarea>
                     </div>
+
                     @error('mensaje')
                     <span class="text-red-500 font-semibold">{{$message}}</span>
-                @enderror
+                    @enderror
                 </div>
                 <div class="p-4 w-full">
 

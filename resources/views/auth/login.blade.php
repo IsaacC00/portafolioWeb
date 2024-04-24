@@ -14,6 +14,13 @@
 
             <form action="{{route('login')}}" method="POST" class="flex-wrap">
                 @csrf
+
+                @if (session('mensaje'))
+                <p class="bg-red-500 text-white my-2 
+                rounded-lg text-sm p-2 text-center font-bold">{{session('mensaje')}}</p>
+                @endif
+
+
                 <div class="p-2 w-full">
                     <label for="email" class="leading-7 text-sm text-slate-200 uppercase">Correo</label>
                     <input
@@ -38,14 +45,21 @@
                     @enderror
                 </div>
 
-                <div class="p-4 w-full">
+                <div class="p-2">
+                    <input type="checkbox" name="remember"> 
+                    <label for="" class=" text-white text-xs uppercase">
+                        Mantener mi sesión abierta
+                    </label> 
+                </div>
 
+                <div class="p-4 w-full">
                    <input type="submit"
                    value="Iniciar Sesion"
                    class="cursor-pointer flex mx-auto text-white bg-orange-600 hover:bg-black hover:text-slate-200 border-lg font-semibold py-4 px-10 focus:outline-nonerounded text-base uppercase"
                    >
-
                 </div>
+
+               
             </form>
 
         </div>

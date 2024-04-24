@@ -19,7 +19,7 @@
             {{-- TABLA PRINCIPAL --}}
             <div class="my-6 ">
                 <div class=" overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <table class="font-semibold w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-5">
@@ -29,10 +29,10 @@
                                     Estatus
                                 </th>
                                 <th scope="col" class="px-6 py-5">
-                                    Categorias
+                                    Categoría
                                 </th>
                                 <th scope="col" class="px-6 py-5">
-                                    Fecha Creacion
+                                    Fecha Creación 
                                 </th>
                                 <th scope="col" class="px-6 py-5">
                                     Acciones
@@ -47,10 +47,10 @@
                                     {{$post->name}}
                                 </th>
                                 <td class="px-6 py-4">
-                                    @if ($post->status == 1)
+                                    @if ($post->status == 2)
                                         Publico
                                     @else
-                                        En Edicion
+                                        En Edición 
                                     @endif
                                 </td>
                                 <td class="px-6 py-4">
@@ -61,9 +61,9 @@
                                 </td>
                                 <td class="px-6 py-4 ">
                                     
-                                    <a href="{{route('admin.portfolio.edit',$post->id)}}" class="text-gray-800">Editar</a>
+                                    <a href="{{route('admin.posts.edit',$post)}}" class="text-blue-800">Editar</a>
                                     {{-- delete--}}
-                                    <form action="{{route('admin.portfolio.destroy',$post)}}" method="POST" >
+                                    <form action="{{route('admin.posts.destroy',$post)}}" method="POST" >
                                         @method('DELETE')
                                         @csrf
                                         

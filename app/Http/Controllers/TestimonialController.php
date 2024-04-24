@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $testimonials=Testimonial::all();
+        $testimonials=Testimonial::paginate(4);
         return view('admin.testimonials.index',compact('testimonials')); 
     }
 
@@ -38,7 +42,7 @@ class TestimonialController extends Controller
 
         // dd($request);
         $new = Testimonial::create($request->all());
-        return redirect()->route('admin.testimonials.edit', $new)->with('info','Testimonial creado con exito');
+        return redirect()->route('admin.testimonials.edit', $new)->with('info','Testimonial creado con éxito');
     }
 
     /**
@@ -70,7 +74,7 @@ class TestimonialController extends Controller
 
         $testimonial->update($request->all());
 
-        return redirect()->route('admin.testimonials.edit',$testimonial)->with('info','Datos actualizados con exito');
+        return redirect()->route('admin.testimonials.edit',$testimonial)->with('info','Datos actualizados con éxito');
     }
 
     /**
@@ -79,6 +83,6 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('admin.testimonials.index')->with('info','Datos actualizados con exito');
+        return redirect()->route('admin.testimonials.index')->with('info','Datos actualizados con éxito');
     }
 }
