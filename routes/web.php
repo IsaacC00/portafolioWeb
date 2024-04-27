@@ -4,6 +4,7 @@ use App\Http\Controllers\BackController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContacController;
+use App\Http\Controllers\ForgetPasswordManager;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InformationController;
@@ -74,3 +75,11 @@ Route::get('/user-edit',[PerfilController::class,('index')])->name('admin.user')
 Route::post('/user-edit',[PerfilController::class,('store')])->name('user.edit');
 
 /** CRUDS */
+
+/** RESET PASSWORD */
+Route::get("/forget-password",[ForgetPasswordManager::class,('forgetPassword')])->name('forget.password');
+Route::post("/forget-password",[ForgetPasswordManager::class,('forgetPasswordPost')])->name('forget.password.post');
+Route::get("/reset-password/{token}",[ForgetPasswordManager::class,('resetPassword')])->name('reset.password');
+Route::post("/reset-password",[ForgetPasswordManager::class,('resetPasswordPost')])->name('reset.password.post');
+
+/** RESET PASSWORD */

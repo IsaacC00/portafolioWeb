@@ -22,15 +22,15 @@
                     </div>
                 </a>
             </div>
-        @empty
+        @empty  
             <div>
-                <p> No existen proyectos</p>
+                <p>No existen proyectos</p>
             </div>
         @endforelse
             
     </div>
     
     <div class="flex items-center justify-center text-orange-500 mt-5 font-semibold text-base">
-        <a href="{{route('home.post')}}">Mas Proyectos >></a >
+        <a href="{{route('home.post')}}">Más Proyectos >></a >
     </div>
 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="flex flex-col min-h-screen">
 
 <head class="backdrop-brightness-50">
     <meta charset="UTF-8">
@@ -11,24 +11,26 @@
 
 </head>
 
-<body class="bg-zinc-800">
+<body class="bg-zinc-800 flex flex-col flex-1">
 
     <header class="">
         <livewire:nav-category />
     </header>
 
-    <div class="min-h-screen">
+    <div class="flex-1">
 
         @yield('contenedor')
 
-        <footer class="bg-zinc-900">
-            <div class="px-5 py-6 xl:max-w-maxw m-auto text-center text-slate-400 text-sm">
-                Copyrights ©{{ //objeto de fechas de blade para imprimir fechas
-                now()->year }} | Todos los Derechos Reservados.
-            </div>
-        </footer>
+        
 
     </div>
+
+    <footer class="bg-zinc-900">
+        <div class="px-5 py-6 xl:max-w-maxw m-auto text-center text-slate-400 text-sm">
+            Copyrights ©{{ //objeto de fechas de blade para imprimir fechas
+            now()->year }} | Todos los Derechos Reservados.
+        </div>
+    </footer>
     <script>
         // Esperar a que el DOM esté listo
         document.addEventListener('DOMContentLoaded', function () {

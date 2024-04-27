@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
         // ]);
         
         $this->call(UserSeeder::class);
-        Category::factory(4)->create();
-        Certificate::factory(10)->create();
-        Testimonial::factory(10)->create();
+        Category::factory(6)->create();
+        Certificate::factory(6)->create();
+        Testimonial::factory(6)->create();
         $this->call(PostSeeder::class);
 
     }
