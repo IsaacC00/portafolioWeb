@@ -47,7 +47,15 @@ class ForgetPasswordManager extends Controller
 
    public function resetPassword($token)
    {
-        return view('home.new-password',compact('token'));
+        $tokenData = DB::table('password_reset_tokens')
+        ->where('token', $token)
+        ->first();
+
+        if (!$tokenData) {
+            return redirect('auth.login')->with('mensaje','El token es inválido');
+        }else{    
+            return view('home.new-password',compact('token'));
+        }
    }
 
    public function resetPasswordPost(Request $request)

@@ -42,7 +42,9 @@ class PostController extends Controller
             foreach ($request->file('images') as $image) {
 
                 // Recortar la imagen
-                $img = Image::make($image)->fit(1000, 1000);
+                $img = Image::make($image)->resize(961, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
 
                 // Guardar la imagen recortada en el almacenamiento public/storage
                 $fileName = $image->hashName();
@@ -85,7 +87,9 @@ class PostController extends Controller
             foreach ($request->file('images') as $image) {
 
                 // Recortar la imagen
-                $img = Image::make($image)->fit(1000, 1000);
+                $img = Image::make($image)->resize(961, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
 
                 // Guardar la imagen recortada en el almacenamiento local
                 $fileName = $image->hashName();

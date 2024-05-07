@@ -71,7 +71,7 @@
         type: 'slider',
         focusAt: 'center',
         perView: 1,
-        autoplay: 3500,
+        autoplay: 2500,
         animationDuration: 700,
         gap: 0,
         classes: {

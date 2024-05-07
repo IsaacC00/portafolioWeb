@@ -15,8 +15,8 @@ class HomeController extends Controller
     {
         $information = Information::first();
         $posts = Post::where('status', 2)->latest('id')->paginate(6);
-        $testimonios = Testimonial::all();
-        $certificados = Certificate::all();
+        $testimonios = Testimonial::latest('id')->get();
+        $certificados = Certificate::latest('id')->get();
         return view('home.index', [
             'information'=>$information,
             'posts'=>$posts,

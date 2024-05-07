@@ -20,6 +20,7 @@ class TestimonialFactory extends Factory
             'testimonio' => $this->faker->paragraph, // Genera un párrafo aleatorio
             'nombre_testimonio' => $this->faker->name, // Genera un nombre de persona aleatorio
             'cargo_testimonio' => $this->faker->jobTitle, //
+            'user_id'=>1,
         ];
     }
 }

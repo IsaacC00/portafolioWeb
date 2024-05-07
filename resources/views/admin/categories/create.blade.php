@@ -30,6 +30,10 @@
 
                 {!! Form::submit('Crear categoría', ['class'=>'font-bold bg-purple-600 rounded-md text-sm text-white p-2.5 cursor-pointer']) !!}
             {!! Form::close() !!}
-        </div>  
+        </div> 
+        
+        <script>
+            
+        </script>
 
 @endsection

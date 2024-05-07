@@ -25,7 +25,7 @@
 </section>
 
 @if(session('info'))
-<div class="fixed bottom-0 left-0 right-0 bg-green-600 text-white text-center py-4 lg:py-6 px-4">
+<div class="fixed bottom-0 font-semibold left-0 right-0 bg-green-600 text-white text-center py-4 lg:py-6 px-4">
     {{ session('info') }}
 </div>
 @endif
