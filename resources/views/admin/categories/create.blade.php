@@ -21,7 +21,7 @@
 
                 <div class="my-5">
                     {!! Form::label('slug', 'Nombre (slug)',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
-                    {!! Form::text('slug', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'Slug']) !!}
+                    {!! Form::text('slug', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'Slug','id' => 'slug', 'readonly' => 'readonly']) !!}
                 </div>
                 @error('slug')
                 <p class="bg-red-500 text-white my-2 
@@ -33,7 +33,10 @@
         </div> 
         
         <script>
-            
+            document.getElementById('name').addEventListener('input', function() {
+                const slugInput = document.getElementById('slug');
+                slugInput.value = 'proyectos-' + this.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            });
         </script>
 
 @endsection

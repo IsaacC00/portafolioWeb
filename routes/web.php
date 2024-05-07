@@ -40,7 +40,7 @@ Route::get('home/index',[HomeController::class,'index'])->name('home.post');
 
 Route::get('home/{post}',[HomeController::class,'show'])->name('home.show');
 
-Route::get('category/{category}',[HomeController::class,'category'])->name('home.category');
+Route::get('category/{category:slug}',[HomeController::class,'category'])->name('home.category');
 /**Home */
 
 /** CRUDS */

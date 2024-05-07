@@ -18,7 +18,7 @@
             Inicio
         </a>
         @forelse ($category as $cat)
-        <a href="{{route('home.category',$cat->id)}}"
+        <a href="{{route('home.category',$cat->slug)}}"
             class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
             {{$cat->name}}
         </a>
