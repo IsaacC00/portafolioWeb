@@ -12,7 +12,7 @@ class ContacController extends Controller
     {
         $data = request()->validate([
             'nombre'=>'required|min:3|max:38',
-            'telefono'=>'required|numeric',
+            'telefono'=>'required|regex:/^09\d{8}$/',
             'mensaje'=>'required|min:5',
         ]);
         //recibe el email

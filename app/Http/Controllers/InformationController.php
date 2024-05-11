@@ -39,6 +39,10 @@ class InformationController extends Controller
             'imagen'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
+        if (Information::where('user_id', auth()->id())->exists()) {
+            return redirect()->back()->with('info', 'Ya tienes un registro existente.');
+        }
+
         $imagen = $request->file('imagen');
         $nombreImagen = Str::uuid() . "." . $imagen->extension();
 

@@ -6,6 +6,11 @@
         <h2 class="sm:text-4xl text-3xl font-bold title-font mb-4 text-black">Agregar Información</h2>
     </div>
 </div>
+@if (session('info'))
+<div class="bg-red-600 rounded-lg my-3 sm:w-6/12 lg:w-4/12">
+    <h1 class="text-white text-base font-semibold p-2 text-center">{{session('info')}}</h1>
+</div>
+@endif
 <div class=" bg-white p-6 rounded-lg shadow-xl">
 
     {!! Form::open(['route'=>'admin.user.store','method' => 'post', 'files' => true]) !!}
@@ -50,6 +55,5 @@
     !!}
     {!! Form::close() !!}
 </div>
-
 
 @endsection

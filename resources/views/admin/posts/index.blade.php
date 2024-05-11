@@ -2,7 +2,7 @@
 
 @section('cuerpo')
 
-<h1 class="text-4xl font-bold"> Lista los Proyectos</h1>
+<h1 class="text-4xl font-bold"> Lista de Proyectos</h1>
 
 @if (session('info'))
 <div class="bg-green-600 rounded-lg my-3 sm:w-6/12 lg:w-4/12">
