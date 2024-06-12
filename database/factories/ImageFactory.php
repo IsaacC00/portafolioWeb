@@ -25,7 +25,7 @@ class ImageFactory extends Factory
     {
         $faker = \Faker\Factory::create();
 
-        $imageContent = file_get_contents($faker->imageUrl(961, 1253));
+        $imageContent = file_get_contents($faker->imageUrl(960, 1240));
         $imageName = 'projects/' . uniqid() . '.jpg';
 
         // Asegúrate de que la carpeta `projects` exista o créala

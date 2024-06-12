@@ -26,10 +26,11 @@
             Construyendo sin limites
         </p>
         <p class="mb-8 leading-relaxed text-slate-200">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Rerum dolorem doloremque nesciunt maiores? Labore minus voluptas,
-            adipisci distinctio asperiores doloribus rerum omnis vitae magnam dolores
-            assumenda ex temporibus quisquam corporis!
+            Como arquitecto siempre a la vanguardia de las nuevas tecnologías, 
+            me apasiona fusionar las últimas tendencias en diseño arquitectónico
+             con soluciones innovadoras que reflejen las aspiraciones y deseos de
+             cada cliente, garantizando proyectos que combinan funcionalidad,
+             estética y satisfacción.
         </p>
 
         <div class="block space-y-4 lg:flex md:items-start justify-center lg:space-y-0 lg:space-x-4">

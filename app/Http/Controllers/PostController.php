@@ -41,8 +41,8 @@ class PostController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
 
-                // Recortar la imagen
-                $img = Image::make($image)->resize(961, null, function ($constraint) {
+                // Redimenzionar la imagen
+                $img = Image::make($image)->resize(961, 1240, function ($constraint) {
                     $constraint->aspectRatio();
                 });
 
@@ -86,8 +86,8 @@ class PostController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
 
-                // Recortar la imagen
-                $img = Image::make($image)->resize(961, null, function ($constraint) {
+                // Redimensionar la imagen
+                $img = Image::make($image)->resize(960, 1240, function ($constraint) {
                     $constraint->aspectRatio();
                 });
 

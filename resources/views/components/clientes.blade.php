@@ -1,7 +1,7 @@
 @props(['testimonios'])
 
 <div class="container px-5 py-24 mx-auto flex flex-wrap border-t-2 border-zinc-900">
-    <div class="flex flex-col text-center w-full mb-20">
+    <div class="flex flex-col text-center w-full mb-10">
         <h2
             class="sm:text-4xl text-2xl font-medium title-font underline decoration-orange-600 decoration-4 underline-offset-8 text-slate-200">
             Testimonios</h2>
@@ -81,4 +81,3 @@
 
     glide07.mount();
 </script>
-<!-- End Testimonial slider -->

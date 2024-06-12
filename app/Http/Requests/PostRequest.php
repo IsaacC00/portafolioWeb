@@ -33,9 +33,11 @@ class PostRequest extends FormRequest
                 'body' => 'required',   
                 'images' => 'required',
                 'images.*' => 'required|mimes:jpeg,png,jpg|max:2048',
+                
             ]);
         }
     
         return $rules;
     }
+
 }
