@@ -54,12 +54,27 @@
                     <span class="text-red-500 font-semibold">{{$message}}</span>
                     @enderror
                 </div>
+
+                <div class=" mx-auto">
+                    {!!htmlFormSnippet()!!}
+                    @if ($errors->has('g-recaptcha-response'))
+
+                    <div
+                       class="text-red-500 font-semibold">
+                            {{$errors->first('g-recaptcha-response')}}
+                    </div>
+                        
+                    @endif
+                </div>
+
                 <div class="p-4 w-full">
 
                     <button type="submit"
-                    class="flex mx-auto text-white bg-orange-600 hover:bg-black hover:text-slate-200 border-lg font-semibold py-4 px-10 focus:outline-nonerounded text-base uppercase"
+                    class="flex mx-auto px-8 py-3 relative rounded group overflow-hidden font-semibold uppercase bg-white text-orange-600"
                     >
-                        Enviar
+                    <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-orange-600 group-hover:h-full opacity-90"></span>
+                    <span class="relative group-hover:text-white">Enviar</span>
+                    
                     </button>
 
                 </div>

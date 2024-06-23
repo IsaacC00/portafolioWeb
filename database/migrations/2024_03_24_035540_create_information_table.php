@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             
             $table->string('telefono');
-            $table->string('email');
-            $table->string('ubicacion');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('twitter');
             $table->string('imagen');
+            $table->string('descripcion');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             

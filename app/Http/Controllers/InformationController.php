@@ -23,20 +23,21 @@ class InformationController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   
+    {
 
         $request->validate([
-            'telefono'=>'required|numeric',
-            'email'=>'required|email',
-            'ubicacion'=>'required',
-            'imagen'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+            'telefono' => 'required|numeric',
+            'facebook' => 'required|max:30',
+            'instagram' => 'required|max:30',
+            'twitter' => 'required|max:30',
+            'descripcion' => 'required|max:240',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
         if (Information::where('user_id', auth()->id())->exists()) {
@@ -47,18 +48,20 @@ class InformationController extends Controller
         $nombreImagen = Str::uuid() . "." . $imagen->extension();
 
         $imagenServidor = Image::make($imagen);
-        $imagenServidor->fit(1000,1000);   
+        $imagenServidor->fit(1000, 1000);
 
-        $imagenServidor->save(public_path('perfiles').'/'.$nombreImagen);
+        $imagenServidor->save(public_path('perfiles') . '/' . $nombreImagen);
 
         $information = new Information();
         $information->telefono = $request->telefono;
-        $information->email = $request->email;
-        $information->ubicacion = $request->ubicacion;
+        $information->facebook = $request->facebook;
+        $information->instagram = $request->instagram;
+        $information->twitter = $request->twitter;
+        $information->descripcion = $request->descripcion;
         $information->imagen = $nombreImagen; // Guardar ruta de la imagen
         $information->save();
 
-        return redirect()->route('admin.user')->with('info','Información agregada con éxito');
+        return redirect()->route('admin.user')->with('info', 'Información agregada con éxito');
     }
 
     /**
@@ -66,7 +69,6 @@ class InformationController extends Controller
      */
     public function show(string $id)
     {
-        
     }
 
     /**
@@ -74,19 +76,21 @@ class InformationController extends Controller
      */
     public function edit(Information $user)
     {
-        return view('admin.user.edit',compact('user'));
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Information $user)
-    {
+    {    
         $request->validate([
             'telefono' => 'required|numeric',
-            'email' => 'required|email',
-            'ubicacion' => 'required',
-            'imagen' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:1024', // Cambio a 'sometimes'
+            'facebook' => 'required|max:30',
+            'instagram' => 'required|max:30',
+            'twitter' => 'required|max:30',
+            'descripcion' => 'required|max:240',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
         if ($request->hasFile('imagen')) {
 
@@ -96,27 +100,28 @@ class InformationController extends Controller
             $imagenServidor = Image::make($imagen);
             $imagenServidor->fit(1000, 1000);
 
-            $imagenServidor->save(public_path('perfiles').'/'.$nombreImagen);
-            
-            $imagePath = public_path('perfiles').'/'. $user->imagen;
+            $imagenServidor->save(public_path('perfiles') . '/' . $nombreImagen);
+            $imagePath = public_path('perfiles') . '/' . $user->imagen;
 
             // Si es necesario, elimina la imagen anterior
             if ($user->imagen && File::exists($imagePath)) {
                 File::delete($imagePath);
             }
-    
+
             // Actualizar la ruta de la imagen solo si se sube una nueva
             $user->imagen = $nombreImagen;
         }
-    
+
         // Actualizar los demás campos
         $user->telefono = $request->telefono;
-        $user->email = $request->email;
-        $user->ubicacion = $request->ubicacion;
-        
+        $user->facebook = $request->facebook;
+        $user->instagram = $request->instagram;
+        $user->twitter = $request->twitter;
+        $user->descripcion = $request->descripcion;
+
         $user->save();
-    
-        return redirect()->route('admin.user')->with('info','Información editada con éxito');
+
+        return redirect()->route('admin.user')->with('info', 'Información editada con éxito');
     }
 
     /**

@@ -21,8 +21,6 @@
 
         @yield('contenedor')
 
-        
-
     </div>
 
     <footer class="bg-zinc-900">

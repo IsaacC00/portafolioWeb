@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         
-        $posts = Post::where('status', 2)->latest('id')->paginate(9);
+        $posts = Post::where('status', 2)->latest('id')->get();
         return view('home.post', compact('posts'));
     }
 
@@ -39,23 +39,15 @@ class HomeController extends Controller
 
         $this->authorize('published',$post);
         
-        $similar =Post::where('category_id',$post->category_id)
-                        ->where('status',2)
-                        ->where('id', '!=', $post->id)
-                        ->latest('id')
-                        ->take(3)
-                        ->get();
-        
-        $images= $post->images()->paginate(3);
-        return view('home.show' , compact('post','images','similar'));
+        $images= $post->images()->get();
+        return view('home.show' , compact('post','images'));
     }
 
     public function category(Category $category)
     {
         $posts = Post::where('category_id', $category->id)
         ->where('status',2)
-        ->latest('id')
-        ->paginate(3);
+        ->latest('id')->get();
 
         return view('home.category',compact('posts','category'));
 

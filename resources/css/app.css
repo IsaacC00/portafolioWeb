@@ -22,4 +22,9 @@
     cursor: pointer;
 }
 
+@layer utilities{
+    .paused {
+        animation-play-state: paused;
+    }
+}
 

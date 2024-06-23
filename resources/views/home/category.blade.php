@@ -7,11 +7,11 @@
     <div class="flex flex-col text-center w-full mb-20">
         <h2
             class="sm:text-4xl text-2xl font-medium title-font underline decoration-orange-500 decoration-4 underline-offset-8 text-white">
-            Proyectos: {{$category->name}}
+            Proyectos Tipo: {{$category->name}}
         </h2>
     </div>
 
-    <div class="flex flex-wrap">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 items-center justify-center">
 
         @foreach($posts as $post)
         <x-card :post="$post" />
@@ -19,10 +19,5 @@
     </div>
 
 </div>
-
-<div class="mx-5 my-4">
-    {{$posts->links()}}
-</div>
-
 
 @endsection

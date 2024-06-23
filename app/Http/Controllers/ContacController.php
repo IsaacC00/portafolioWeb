@@ -14,6 +14,7 @@ class ContacController extends Controller
             'nombre'=>'required|min:3|max:38',
             'telefono'=>'required|regex:/^09\d{8}$/',
             'mensaje'=>'required|min:5',
+            'g-recaptcha-response'=>'recaptcha',
         ]);
         //recibe el email
         Mail::to('isaacpasquel1974@gmail.com')->send( new ContactUs($data));

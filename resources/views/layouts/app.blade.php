@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" class="!scroll-smooth">
 
 <head class="backdrop-brightness-50">
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+    {!!htmlScriptTagJsApi()!!}
 
     <style>
         .swiper {
@@ -20,8 +21,8 @@
 
 <body class="bg-zinc-800">
 
-    <header class="">
-        <x-navegacion />
+    <header class="header">
+        <x-navegacion :information="$information" />
     </header>
 
     <div class="min-h-screen">
@@ -56,7 +57,6 @@
         });
     </script>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>

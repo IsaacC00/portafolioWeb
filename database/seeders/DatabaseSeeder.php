@@ -25,12 +25,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        
+
         $this->call(UserSeeder::class);
         Category::factory(6)->create();
         Certificate::factory(6)->create();
         Testimonial::factory(6)->create();
         $this->call(PostSeeder::class);
-
     }
 }

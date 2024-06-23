@@ -1,83 +1,139 @@
 @props(['testimonios'])
 
-<div class="container px-5 py-24 mx-auto flex flex-wrap border-t-2 border-zinc-900">
+<div class="container  px-5 pt-28 mx-auto flex flex-wrap border-t-2 border-zinc-900">
     <div class="flex flex-col text-center w-full mb-10">
         <h2
             class="sm:text-4xl text-2xl font-medium title-font underline decoration-orange-600 decoration-4 underline-offset-8 text-slate-200">
             Testimonios</h2>
-    </div>    
+    </div>
 </div>
 
 <!-- Component: Testimonial slider -->
-<div class="relative flex flex-col glide-08 mx-auto max-w-4xl content-center ">
-    <!-- Slides -->
-    <div class="overflow-hidden text-center bg-zinc-900 bg-opacity-60 rounded shadow-2xl " data-glide-el="track">
-        <ul class="relative overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]">
-            
-            @forelse ($testimonios as $row)
-            <li>
-                <div class="relative flex flex-col glide-08 content-center mx-auto max-w-4xl">
-                    <!-- Start Testimonial -->
-                    <div class="overflow-hidden ">
-                        <div class="relative p-6">
-                            <div class="relative z-10">
-                                <div class="p-6 text-lg leading-loose lg:text-xl text-gray-400 ">
-                                    <p>
-                                        {{$row->testimonio}}
-                                    </p>
-                                </div>
-                                <div class="flex flex-col items-center gap-2 p-6 text-sm text-orange-500">
-                                    <div class="flex items-center gap-4 pt-4 text-sm text-center text-orange-500">
-                                        <div class="flex flex-col gap-1">
-                                            <span class="font-bold uppercase">{{$row->nombre_testimonio}}</span>
-                                            <cite class="not-italic">{{$row->cargo_testimonio}}</cite>
-                                        </div>
+<!-- Start Testimonial -->
+<section class="">
+    <div class="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
+            <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+                <h2 class="text-3xl font-bold tracking-tight text-orange-500 sm:text-4xl">
+                    "Mira lo que dicen nuestros clientes..."
+                </h2>
+
+                <p class="mt-4 text-slate-200">
+                    No solo confíes en lo que nosotros decimos, descubre por ti mismo la experiencia de nuestros
+                    clientes satisfechos y sus historias de éxito !!!
+                </p>
+
+                <div class="hidden lg:mt-8 lg:flex lg:gap-4">
+                    <button aria-label="Previous slide" id="keen-slider-previous-desktop"
+                        class="rounded-full border border-white p-3 text-white transition hover:bg-orange-600 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5 rtl:rotate-180">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <button aria-label="Next slide" id="keen-slider-next-desktop"
+                        class="rounded-full border border-white p-3 text-white transition hover:bg-orange-600 hover:text-white">
+                        <svg class="size-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="-mx-6 lg:col-span-2 lg:mx-0">
+                <div id="keen-slider" class="keen-slider">
+
+                    @forelse ($testimonios as $row)
+                    <div class=" keen-slider__slide ">
+                        <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
+                            <div class="flex items-center gap-4">
+                                <img alt=""
+                                    src="{{ $row->imagen?  asset('clientes'.'/'.$row->imagen) : asset('clientes'.'/'.'nonUser.png') }}"
+                                    class="size-14 rounded-full object-cover" />
+    
+                                <div>
+                                    <div class=" flex flex-col justify-center text-green-500">
+                                        <p class="text-2xl font-bold text-rose-600 sm:text-3xl">{{$row->cargo_testimonio}}</p>
+                                        &mdash; {{$row->nombre_testimonio}}
                                     </div>
+    
+                                    {{-- <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p> --}}
                                 </div>
                             </div>
-                            <svg aria-hidden="true" class="absolute z-0 h-16 left-6 top-6" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2.79187 3.83333C2.66179 3.83333 2.53696 3.85316 2.41271 3.87125C2.45296 3.73591 2.49437 3.59825 2.56087 3.47458C2.62737 3.29491 2.73121 3.13916 2.83446 2.98225C2.92079 2.8125 3.07304 2.69758 3.18504 2.55233C3.30229 2.41116 3.46212 2.31725 3.58871 2.2C3.71296 2.0775 3.87571 2.01625 4.00521 1.92991C4.14054 1.85233 4.25837 1.76658 4.38437 1.72575L4.69879 1.59625L4.97529 1.48133L4.69237 0.35083L4.34412 0.43483C4.23271 0.46283 4.09679 0.495496 3.94221 0.53458C3.78412 0.563746 3.61554 0.643663 3.42771 0.71658C3.24221 0.799413 3.02754 0.855413 2.82804 0.988413C2.62737 1.11558 2.39579 1.22175 2.19162 1.39208C1.99387 1.56766 1.75529 1.71991 1.57912 1.94333C1.38662 2.15216 1.19646 2.3715 1.04887 2.62116C0.877957 2.85916 0.761873 3.1205 0.639373 3.37891C0.52854 3.63733 0.43929 3.90158 0.366373 4.15825C0.228123 4.67275 0.16629 5.16158 0.142373 5.57983C0.12254 5.99866 0.134207 6.34691 0.158707 6.59891C0.167457 6.71791 0.18379 6.83341 0.195457 6.91333L0.21004 7.01133L0.225207 7.00783C0.328959 7.49248 0.567801 7.93786 0.914102 8.29243C1.2604 8.64701 1.70001 8.89631 2.18208 9.01148C2.66415 9.12665 3.16897 9.10299 3.63815 8.94323C4.10733 8.78348 4.52169 8.49416 4.83331 8.10874C5.14493 7.72333 5.34107 7.25757 5.39903 6.76534C5.457 6.27311 5.37443 5.77452 5.16087 5.32726C4.94731 4.88 4.61149 4.50233 4.19225 4.23796C3.77302 3.97358 3.28751 3.8333 2.79187 3.83333V3.83333ZM9.20854 3.83333C9.07846 3.83333 8.95362 3.85316 8.82937 3.87125C8.86962 3.73591 8.91104 3.59825 8.97754 3.47458C9.04404 3.29491 9.14787 3.13916 9.25112 2.98225C9.33746 2.8125 9.48971 2.69758 9.60171 2.55233C9.71896 2.41116 9.87879 2.31725 10.0054 2.2C10.1296 2.0775 10.2924 2.01625 10.4219 1.92991C10.5572 1.85233 10.675 1.76658 10.801 1.72575L11.1155 1.59625L11.392 1.48133L11.109 0.35083L10.7608 0.43483C10.6494 0.46283 10.5135 0.495496 10.3589 0.53458C10.2008 0.563746 10.0322 0.643663 9.84437 0.71658C9.65946 0.799997 9.44421 0.855413 9.24471 0.988997C9.04404 1.11616 8.81246 1.22233 8.60829 1.39266C8.41054 1.56825 8.17196 1.7205 7.99579 1.94333C7.80329 2.15216 7.61312 2.3715 7.46554 2.62116C7.29462 2.85916 7.17854 3.1205 7.05604 3.37891C6.94521 3.63733 6.85596 3.90158 6.78304 4.15825C6.64479 4.67275 6.58296 5.16158 6.55904 5.57983C6.53921 5.99866 6.55087 6.34691 6.57537 6.59891C6.58412 6.71791 6.60046 6.83341 6.61212 6.91333L6.62671 7.01133L6.64187 7.00783C6.74563 7.49248 6.98447 7.93786 7.33077 8.29243C7.67707 8.64701 8.11668 8.89631 8.59875 9.01148C9.08081 9.12665 9.58563 9.10299 10.0548 8.94323C10.524 8.78348 10.9384 8.49416 11.25 8.10874C11.5616 7.72333 11.7577 7.25757 11.8157 6.76534C11.8737 6.27311 11.7911 5.77452 11.5775 5.32726C11.364 4.88 11.0282 4.50233 10.6089 4.23796C10.1897 3.97358 9.70417 3.8333 9.20854 3.83333V3.83333Z" class="fill-emerald-50" />
-                            </svg>
-                        </div>
+    
+                            <p class="mt-4 text-gray-700">
+                                {{$row->testimonio}}
+                            </p>
+                        </blockquote>
                     </div>
-                    <!-- End Testimonial -->
+                    @empty
+                    <div>sin datos</div>
+                    @endforelse
                 </div>
-            </li>
-            @empty
-                <li>
-                    <div class="relative flex flex-col glide-08 content-center mx-auto max-w-4xl"">
-                        <p>No hay Datos</p>
-                    </div>
-                </li>
-            @endforelse
-            
-        </ul>
-    </div>
-    <!-- Indicators -->
-    <div class="flex items-center justify-center gap-2 pt-6" data-glide-el="controls[nav]">
-        @forelse ($testimonios as $index => $row)
-            <button class="p-4 group" data-glide-dir="={{$index}}" aria-label="goto slide 1"><span class="block w-2 h-2 transition-colors duration-300 rounded-full opacity-70 ring-1 ring-slate-700 bg-white/20 focus:outline-none"></span></button>
-        @empty
-            <p>No hay información</p>
-        @endforelse
-        
-    </div>
-</div>
+            </div>
+        </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+        <div class="mt-8 flex justify-center gap-4 lg:hidden">
+            <button aria-label="Previous slide" id="keen-slider-previous"
+                class="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white">
+                <svg class="size-5 -rotate-180 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </button>
 
-<script>
-    var glide07 = new Glide('.glide-08', {
-        type: 'slider',
-        focusAt: 'center',
-        perView: 1,
-        autoplay: 2500,
-        animationDuration: 700,
-        gap: 0,
-        classes: {
-            activeNav: '[&>*]:bg-slate-700',
+            <button aria-label="Next slide" id="keen-slider-next"
+                class="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
+
+<script type="module">
+    import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+  
+    const keenSlider = new KeenSlider(
+      '#keen-slider',
+      {
+        loop: true,
+        slides: {
+          origin: 'center',
+          perView: 1.25,
+          spacing: 16,
         },
-    });
-
-    glide07.mount();
+        breakpoints: {
+          '(min-width: 1024px)': {
+            slides: {
+              origin: 'auto',
+              perView: 1.5,
+              spacing: 32,
+            },
+          },
+        },
+      },
+      []
+    )
+  
+    const keenSliderPrevious = document.getElementById('keen-slider-previous')
+    const keenSliderNext = document.getElementById('keen-slider-next')
+  
+    const keenSliderPreviousDesktop = document.getElementById('keen-slider-previous-desktop')
+    const keenSliderNextDesktop = document.getElementById('keen-slider-next-desktop')
+  
+    keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
+    keenSliderNext.addEventListener('click', () => keenSlider.next())
+  
+    keenSliderPreviousDesktop.addEventListener('click', () => keenSlider.prev())
+    keenSliderNextDesktop.addEventListener('click', () => keenSlider.next())
 </script>
+
+
+<!-- End Testimonial -->

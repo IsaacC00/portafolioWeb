@@ -11,9 +11,12 @@ class Navegacion extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+
+    public $information;
+
+    public function __construct($information)
     {
-        //
+        $this->information = $information;
     }
 
     /**

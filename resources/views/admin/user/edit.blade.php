@@ -26,19 +26,38 @@
         @enderror
 
         <div class="my-2">
-            {!! Form::label('email', 'Email',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
-            {!! Form::text('email', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>' correo@correo.com ']) !!}
+            {!! Form::label('facebook', 'Facebook',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
+            {!! Form::text('facebook', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'John-Mark']) !!}
         </div>
-        @error('email')
+        @error('facebook')
         <p class="bg-red-500 text-white my-2 
                     rounded-lg text-sm p-2 text-center">{{$message}}</p>
         @enderror
 
         <div class="my-5">
-            {!! Form::label('ubicacion', 'Ubicación',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
-            {!! Form::text('ubicacion', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'Cantón, Provincia ']) !!}
+            {!! Form::label('instagram', 'Instagram',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
+            {!! Form::text('instagram', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'cr7cristianoronaldo']) !!}
         </div>
-        @error('ubicacion')
+        @error('instagram')
+        <p class="bg-red-500 text-white my-2 
+                    rounded-lg text-sm p-2 text-center">{{$message}}</p>
+        @enderror
+
+        <div class="my-5">
+            {!! Form::label('twitter', 'Twitter X',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
+            {!! Form::text('twitter', null, ['class'=>'my-4 text-base border p-3 w-full rounded-lg','placeholder'=>'midudev']) !!}
+        </div>
+        @error('twitter')
+        <p class="bg-red-500 text-white my-2 
+                    rounded-lg text-sm p-2 text-center">{{$message}}</p>
+        @enderror
+
+        <div class="my-5 trix-content">
+            {{-- <textarea name="" id="" cols="30" rows="10"></textarea> --}}
+            {!! Form::label('descripcion', 'Descripcion Personal',['class'=>'mb-2 block text-gray-500 font-bold text-base uppercase']) !!}
+            {!! Form::textarea('descripcion', null, ['class'=>'w-full','rows'=>5]) !!}
+        </div>
+        @error('descripcion')
         <p class="bg-red-500 text-white my-2 
                     rounded-lg text-sm p-2 text-center">{{$message}}</p>
         @enderror

@@ -9,10 +9,13 @@
                         Telefono
                     </th>
                     <th scope="col" class="px-6 py-5">
-                        Email
+                        Twitter(X)
                     </th>
                     <th scope="col" class="px-6 py-5">
-                        Ubicacion
+                        Facebook
+                    </th>
+                    <th scope="col" class="px-6 py-5">
+                        Instagram
                     </th>
                     <th scope="col" class="px-6 py-5">
                         Imagen
@@ -20,6 +23,7 @@
                     <th scope="col" class="px-6 py-5">
                         Acciones
                     </th>
+                   
                 </tr>
             </thead>
             <tbody>
@@ -29,10 +33,13 @@
                             {{$info->telefono}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$info->email}}
+                            {{$info->facebook}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$info->ubicacion}}
+                            {{$info->instagram}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$info->twitter}}
                         </td>
                         <td class="px-6 py-4">
                             <img src="{{ asset('perfiles').'/'.$info->imagen }}"  width="30">

@@ -6,7 +6,17 @@ export default {
     './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation:{
+        'loop-scroll':' 75s linear infinite',
+      },  
+      keyframes:{
+        'loop-scroll':{
+          from:{ transform: 'translateX(0)' },
+          to:{ transform: 'translateX(-100%)' },
+        },
+      }
+    },
   },
   plugins: [],
 

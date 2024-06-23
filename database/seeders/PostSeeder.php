@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
         
         $posts=Post::factory(30)->create()->each(function ($post) {
             // Para cada post, crear entre 1 y 5 imágenes
-            Image::factory(rand(1, 5))->create(['post_id' => $post->id]);
+            Image::factory(rand(5, 10))->create(['post_id' => $post->id]);
         });
 
     }

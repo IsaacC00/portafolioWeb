@@ -34,6 +34,7 @@ Route::post('/login',[LoginController::class,'store']);
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
 /**Home */
+
 Route::get('/',[HomeController::class,'home'])->name('home.index');
 //habilitar index
 Route::get('home/index',[HomeController::class,'index'])->name('home.post');
