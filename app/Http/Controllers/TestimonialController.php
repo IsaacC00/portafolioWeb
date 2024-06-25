@@ -37,10 +37,10 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'testimonio' => 'required|max:255',
-            'nombre_testimonio' => 'required|max:100',
-            'cargo_testimonio' => 'required|max:100',
+            'nombre_testimonio' => 'max:100',
+            'cargo_testimonio' => 'max:100',
             'imagen' => 'max:1024'
             
         ]);
@@ -51,13 +51,15 @@ class TestimonialController extends Controller
             $imagen = $request->file('imagen');
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             $imagenServidor = Image::make($imagen);
-            $imagenServidor->fit(1000, 1000);
+            $imagenServidor->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
             $imagenServidor->save(public_path('clientes') . '/' . $nombreImagen);
-            $request->merge(['imagen' => $nombreImagen]);
+            $validatedData['imagen'] = $nombreImagen;
         }
 
         // dd($request);
-        $new = Testimonial::create($request->all());
+        $new = Testimonial::create($validatedData);
         return redirect()->route('admin.testimonials.edit', $new)->with('info', 'Testimonial creado con éxito');
     }
 
@@ -82,13 +84,12 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'testimonio' => 'required',
-            'nombre_testimonio' => 'required',
-            'cargo_testimonio' => 'required',
+            'nombre_testimonio' => 'max:100',
+            'cargo_testimonio' => 'max:100',
             'imagen' => 'image|max:1024'
         ]);
-
 
         if ($request->hasFile('imagen')) {
 
@@ -96,7 +97,9 @@ class TestimonialController extends Controller
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             
             $imagenServidor = Image::make($imagen);
-            $imagenServidor->fit(1000, 1000);
+            $imagenServidor->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
             
             $imagenServidor->save(public_path('clientes') . '/' . $nombreImagen);
             
@@ -106,12 +109,12 @@ class TestimonialController extends Controller
             if ($testimonial->imagen && File::exists($imagePath)) {
                 File::delete($imagePath);
             }
-            $testimonial->imagen = $nombreImagen;
+            $validatedData['imagen'] = $nombreImagen;
         }
 
         
 
-        $testimonial->update($request->all());
+        $testimonial->update($validatedData);
         return redirect()->route('admin.testimonials.edit', $testimonial)->with('info', 'Datos actualizados con éxito');
     }
 

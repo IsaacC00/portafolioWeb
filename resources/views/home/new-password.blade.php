@@ -6,7 +6,7 @@
         <h2 class="sm:text-3xl text-2xl font-semibold title-font mb-4 text-white">Nueva Contraseña</h2>
     </div>
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-        <div class="bg-zinc-900 bg-opacity-40 p-3 rounded-lg h-full block items-start">
+        <div class="bg-zinc-900 p-3 rounded-lg h-full block items-start">
 
             <form action="{{route('reset.password.post')}}" method="POST" class="flex-wrap" autocomplete="off">
                 @csrf

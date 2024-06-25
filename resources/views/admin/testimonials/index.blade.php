@@ -28,7 +28,7 @@
                 Cargo testimonio
             </th>
             <th scope="col" class="px-6 py-5">
-                Fecha Creación 
+                Imagen testimonio
             </th>
             <th scope="col" class="px-6 py-5">
                 Acciones
@@ -48,8 +48,10 @@
                 {{$row->cargo_testimonio}}
             </td>
 
-            <th scope="row" class="px-6 py-4">
-                {{$row->created_at}}
+            <th scope="row" class="px-6 py-4 justify-center items-center">
+                <img alt=""
+                src="{{ $row->imagen?  asset('clientes'.'/'.$row->imagen) : asset('clientes'.'/'.'nonUser.png') }}"
+                class="size-8 rounded-full object-cover" />
             </th>
 
             <td class="px-6 py-4 space-x-4 flex items-center">

@@ -1,9 +1,9 @@
 @props(['testimonios'])
 
-<div class="container  px-5 pt-28 mx-auto flex flex-wrap border-t-2 border-zinc-900">
+<div class="container px-5  mx-auto flex flex-wrap ">
     <div class="flex flex-col text-center w-full mb-10">
         <h2
-            class="sm:text-4xl text-2xl font-medium title-font underline decoration-orange-600 decoration-4 underline-offset-8 text-slate-200">
+            class="sm:text-4xl text-2xl font-bold underline decoration-orange-600 decoration-4 underline-offset-8 text-black">
             Testimonios</h2>
     </div>
 </div>
@@ -18,14 +18,14 @@
                     "Mira lo que dicen nuestros clientes..."
                 </h2>
 
-                <p class="mt-4 text-slate-200">
+                <p class="mt-4 text-zinc-800">
                     No solo confíes en lo que nosotros decimos, descubre por ti mismo la experiencia de nuestros
                     clientes satisfechos y sus historias de éxito !!!
                 </p>
 
                 <div class="hidden lg:mt-8 lg:flex lg:gap-4">
                     <button aria-label="Previous slide" id="keen-slider-previous-desktop"
-                        class="rounded-full border border-white p-3 text-white transition hover:bg-orange-600 hover:text-white">
+                        class="rounded-full border border-orange-500 p-4 bg-orange-500   text-white transition hover:border-orange-500 hover:bg-white hover:text-orange-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-5 rtl:rotate-180">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -33,7 +33,7 @@
                     </button>
 
                     <button aria-label="Next slide" id="keen-slider-next-desktop"
-                        class="rounded-full border border-white p-3 text-white transition hover:bg-orange-600 hover:text-white">
+                        class="rounded-full border border-orange-500 p-4 bg-orange-500   text-white transition hover:border-orange-500 hover:bg-white hover:text-orange-500">
                         <svg class="size-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -55,8 +55,8 @@
     
                                 <div>
                                     <div class=" flex flex-col justify-center text-green-500">
-                                        <p class="text-2xl font-bold text-rose-600 sm:text-3xl">{{$row->cargo_testimonio}}</p>
-                                        &mdash; {{$row->nombre_testimonio}}
+                                        <p class="text-2xl font-bold text-rose-600 sm:text-3xl">{{$row->cargo_testimonio ? $row->cargo_testimonio : 'Anónimo'}}</p>
+                                        &mdash; {{$row->nombre_testimonio ? $row->nombre_testimonio : 'Anónimo'}}
                                     </div>
     
                                     {{-- <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p> --}}
@@ -77,7 +77,7 @@
 
         <div class="mt-8 flex justify-center gap-4 lg:hidden">
             <button aria-label="Previous slide" id="keen-slider-previous"
-                class="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white">
+                class="rounded-full border border-orange-500 p-4 bg-orange-500   text-white transition hover:border-orange-500 hover:bg-white hover:text-orange-600">
                 <svg class="size-5 -rotate-180 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -85,7 +85,7 @@
             </button>
 
             <button aria-label="Next slide" id="keen-slider-next"
-                class="rounded-full border border-rose-600 p-4 text-rose-600 transition hover:bg-rose-600 hover:text-white">
+                class="rounded-full border border-orange-500 p-4 bg-orange-500   text-white transition hover:border-orange-500 hover:bg-white hover:text-orange-600">
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />

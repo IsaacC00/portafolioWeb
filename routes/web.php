@@ -57,7 +57,7 @@ Route::resource('testimonials',TestimonialController::class)->names('admin.testi
 /**testimoniales */
 
 // certificates
-Route::resource('certificates', CertificateController::class)->names('admin.certificates');
+Route::resource('services', CertificateController::class)->names('admin.services');
 // certificates
 
 //portafolio

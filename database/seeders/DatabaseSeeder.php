@@ -30,6 +30,6 @@ class DatabaseSeeder extends Seeder
         Category::factory(6)->create();
         Certificate::factory(6)->create();
         Testimonial::factory(6)->create();
-        $this->call(PostSeeder::class);
+        // $this->call(PostSeeder::class);
     }
 }

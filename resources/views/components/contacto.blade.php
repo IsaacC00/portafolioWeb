@@ -1,8 +1,7 @@
-<div class="container px-5 py-24 mx-auto border-t-2 border-zinc-900 border-xl ">
+<div class=" py-24 mx-auto bg-cover bg-center h-full" style="background-image: url({{asset('img/final.png')}})">
     <div class="flex flex-col text-center w-full mb-12">
-        <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Contacto</h2>
-        <p class="lg:w-2/3 mx-auto text-slate-200 leading-relaxed text-base">Entendemos la importancia de crear espacios
-            que reflejen la visión y las necesidades únicas de cada cliente.</p>
+        <h2 class="sm:text-4xl text-2xl font-bold underline decoration-orange-500 decoration-4 underline-offset-8 text-white">Contacto</h2>
+        
     </div>
     
     @if (session('info'))
@@ -12,7 +11,7 @@
     @endif
 
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-        <div class="bg-zinc-900 bg-opacity-40 p-6 rounded-lg h-full flex items-start">
+        <div class="bg-zinc-900 bg-opacity-80 p-6 rounded-lg h-full flex items-start">
 
             <form action="{{route('contac.send')}}" method="POST" class="flex flex-wrap -m-2" autocomplete="off">
                 @csrf

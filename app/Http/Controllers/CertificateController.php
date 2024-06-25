@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Certificate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class CertificateController extends Controller
 {
@@ -16,8 +19,8 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        $certificates = Certificate::paginate(4);
-        return view('admin.certificates.index',compact('certificates'));
+        $certificates = Certificate::orderBy('id','desc')->paginate(4);
+        return view('admin.services.index',compact('certificates'));
     }
 
     /**
@@ -25,7 +28,7 @@ class CertificateController extends Controller
      */
     public function create()
     {
-        return view('admin.certificates.create');
+        return view('admin.services.create');
     }
 
     /**
@@ -33,15 +36,28 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'desc_certificado'=>'required',
-            'inst_certificado'=>'required',
-            'tipo_certificado'=>'required',
-            'fecha_certificado'=>'required',
+        
+        $validatedData = $request->validate([
+            'nombre_servicio'=>'required|max:240',
+            'desc_servicio'=>'required|max:240',
+            'imagen' => 'image|max:1024'
         ]);
-        // dd($request);
-        $new = Certificate::create($request->all());
-        return redirect()->route('admin.certificates.edit',$new)->with('info','Certificado creado con éxito');
+        
+        // Procesar la imagen solo si se sube una
+        if ($request->hasFile('imagen')) {
+            
+            $imagen = $request->file('imagen');
+            $nombreImagen = Str::uuid() . "." . $imagen->extension();
+            $imagenServidor = Image::make($imagen);
+            $imagenServidor->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imagenServidor->save(public_path('servicios') . '/' . $nombreImagen);
+            $validatedData['imagen'] = $nombreImagen;
+        }
+        
+        $new = Certificate::create($validatedData);
+        return redirect()->route('admin.services.edit',$new)->with('info','Servicio creado con éxito');
     }
 
     /**
@@ -55,34 +71,54 @@ class CertificateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Certificate $certificate)
+    public function edit(Certificate $service)
     {
-
-        return view('admin.certificates.edit',compact('certificate'));
+        return view('admin.services.edit',compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(Request $request, Certificate $service)
     {
-        $request->validate([
-            'desc_certificado'=>'required',
-            'inst_certificado'=>'required',
-            'tipo_certificado'=>'required',
-            'fecha_certificado'=>'required',
+
+        $validatedData = $request->validate([
+            'nombre_servicio'=>'required|max:240',
+            'desc_servicio'=>'required|max:240',
+            'imagen' => 'image|max:1024'
         ]);
-        // dd($request);
-        $certificate->update($request->all());
-        return redirect()->route('admin.certificates.edit',$certificate)->with('info','Datos actualizados con éxito');
+        
+        if ($request->hasFile('imagen')) {
+
+            $imagen = $request->file('imagen');
+            $nombreImagen = Str::uuid() . "." . $imagen->extension();
+            
+            $imagenServidor = Image::make($imagen);
+            $imagenServidor->resize(200,null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imagenServidor->save(public_path('servicios') . '/' . $nombreImagen);
+            
+            $imagePath = public_path('servicios') . '/' . $service->imagen;
+            
+            // Si es necesario, elimina la imagen anterior
+            if ($service->imagen && File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+
+            $validatedData['imagen'] = $nombreImagen;
+        }
+
+        $service->update($validatedData);
+        return redirect()->route('admin.services.edit',$service)->with('info','Datos actualizados con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Certificate $certificate)
+    public function destroy(Certificate $service)
     {
-        $certificate->delete();
-        return redirect()->route('admin.certificates.index')->with('info','Datos actualizados con éxito');
+        $service->delete();
+        return redirect()->route('admin.services.index')->with('info','Datos actualizados con éxito');
     }
 }

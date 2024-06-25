@@ -6,7 +6,7 @@
 
     <div class="flex flex-col text-center w-full mb-20">
         <h2
-            class="sm:text-4xl text-2xl font-medium title-font underline decoration-orange-500 decoration-4 underline-offset-8 text-white">
+            class="sm:text-4xl text-2xl font-bold title-font underline decoration-orange-500 decoration-4 underline-offset-8 text-black">
             Proyectos Tipo: {{$category->name}}
         </h2>
     </div>

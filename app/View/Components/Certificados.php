@@ -8,13 +8,13 @@ use Illuminate\View\Component;
 
 class Certificados extends Component
 {
-    public $certificados;
+    public $services;
     /**
      * Create a new component instance.
      */
-    public function __construct($certificados)
+    public function __construct($services)
     {
-        $this->certificados=$certificados;
+        $this->services=$services;
     }
 
     /**

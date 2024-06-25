@@ -1,4 +1,4 @@
-<nav class="flex flex-wrap items-center justify-between p-5 bg-secondary-500">
+<nav class="flex flex-wrap items-center justify-between p-5 bg-black">
     <a href="{{ route('home.index') }}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <span class="ml-3 w-32 text-xl">
             <img src="{{ asset('img/logo.png') }}" alt="">

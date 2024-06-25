@@ -19,10 +19,8 @@ class CertificateFactory extends Factory
         
        
         return [
-            'tipo_certificado' => $this->faker->word, // Genera una palabra aleatoria
-            'inst_certificado' => $this->faker->company, // Genera un nombre de compañía aleatorio
-            'desc_certificado' => $this->faker->sentence, // Genera una oración aleatoria
-            'fecha_certificado' => $this->faker->date(), // Genera una fecha aleatoria
+            'nombre_servicio' => $this->faker->company, // Genera un nombre de compañía aleatorio
+            'desc_servicio' => $this->faker->sentence, // Genera una oración aleatoria
             'user_id'=>1,
         ];
         

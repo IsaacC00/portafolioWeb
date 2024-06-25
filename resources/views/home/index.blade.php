@@ -16,6 +16,14 @@
     </div>
 </section>
 
+<section>
+    <x-last-project :last="$last" :images="$images" />
+</section>
+
+<section id="servicios">
+    <x-certificados :services="$services"/>
+</section>
+
 <section id="contacto">
     <x-contacto />
 </section>

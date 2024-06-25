@@ -1,6 +1,6 @@
 @props(['information'])
 <!-- Navbar Start -->
-<nav class="fixed top-0 w-full flex flex-wrap items-center justify-between p-5 bg-zinc-800 z-50">
+<nav class="fixed top-0 w-full flex flex-wrap items-center justify-between p-5 bg-black z-50">
     <a href="{{ route('home.index') }}" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
         <span class="ml-3 w-32 text-xl">
             <img src="{{ asset('img/logo.png') }}" alt="">
@@ -16,11 +16,6 @@
     <div
         class="toggle hidden w-full md:w-auto md:flex text-left text-bold mt-5 md:mt-0 border-t border-primary-500 md:border-none">
 
-        <a href="#acerca"
-            class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
-            Acerca
-        </a>
-
         <a href="#portfolio"
             class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
             Proyectos
@@ -29,14 +24,22 @@
             class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
             Testimonios
         </a>
+        
+
+        <a href="#servicios"
+            class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
+            Servicios
+        </a>
+
         <a href="#contacto"
             class="block md:inline-block text-slate-200 hover:text-orange-500 px-3 py-3 border-b md:border-none uppercase">
             Contacto
         </a>
+
     </div>
 
     <div class="toggle hidden w-full md:w-auto md:flex justify-end text-bold md:mt-0 md:border-none">
-        <a class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
+        <a target="_blank" class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
             href="https://www.facebook.com/{{ $information ? $information->facebook : 'user-user'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook"
                 viewBox="0 0 16 16">
@@ -45,7 +48,7 @@
             </svg>
 
         </a>
-        <a class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
+        <a target="_blank" class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
             href="https://x.com/{{ $information ? $information->twitter : 'user-user' }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter-x"
                 viewBox="0 0 16 16">
@@ -53,7 +56,7 @@
                     d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
             </svg>
         </a>
-        <a class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
+        <a target="_blank" class="mx-auto md:pl-0 block md:inline-block text-slate-200 hover:text-orange-500 px-3.5 py-3.5 border-b md:border-none uppercase"
             href="https://www.instagram.com/{{$information ? $information->instagram : 'user-user' }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-instagram"
                 viewBox="0 0 16 16">

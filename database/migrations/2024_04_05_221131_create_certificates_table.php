@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo_certificado');
-            $table->string('inst_certificado');
-            $table->text('desc_certificado');
-            $table->date('fecha_certificado');
+            $table->string('nombre_servicio');
+            $table->string('desc_servicio');
+            $table->text('imagen')->nullable();
             
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

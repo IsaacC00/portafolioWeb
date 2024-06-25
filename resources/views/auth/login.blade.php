@@ -4,13 +4,13 @@
 
 <div class="container px-5 py-20 mx-auto ">
     <div class="flex flex-col text-center w-full mb-12">
-        <h2 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Iniciar Sesión</h2>
-        <p class="lg:w-2/3 mx-auto text-slate-200 leading-relaxed text-base">
+        <h2 class="sm:text-4xl text-2xl font-bold title-font underline decoration-orange-500 decoration-4 underline-offset-8 text-black">Iniciar Sesión</h2>
+        <p class="lg:w-2/3 mx-auto mt-5 leading-relaxed font-semibold">
             Inicia sesión para administrar este portafolio
         </p>
     </div>
     <div class="lg:w-1/2 md:w-2/3 mx-auto">
-        <div class="bg-zinc-900 bg-opacity-40 p-6 rounded-lg h-full block items-start">
+        <div class="bg-zinc-900  p-6 rounded-lg h-full block items-start">
 
             <form action="{{route('login')}}" method="POST" class="flex-wrap">
                 @csrf
