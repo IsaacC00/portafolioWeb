@@ -17,9 +17,7 @@
                     <th scope="col" class="px-6 py-5">
                         Instagram
                     </th>
-                    <th scope="col" class="px-6 py-5">
-                        Imagen
-                    </th>
+                    
                     <th scope="col" class="px-6 py-5">
                         Acciones
                     </th>
@@ -33,17 +31,15 @@
                             {{$info->telefono}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$info->facebook}}
+                            {{$info->facebook ? $info->facebook : 'Sin Datos'}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$info->instagram}}
+                            {{$info->instagram ? $info->instagram : 'Sin Datos'}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$info->twitter}}
+                            {{$info->twitter ? $info->twitter : 'Sin Datos' }}
                         </td>
-                        <td class="px-6 py-4">
-                            <img src="{{ asset('perfiles').'/'.$info->imagen }}"  width="30">
-                        </td>
+                        
                         <td class="px-6 py-4">
                             <a href="{{route('admin.user.edit',$info->id)}}" class="text-blue-800">Editar</a>
                         </td>

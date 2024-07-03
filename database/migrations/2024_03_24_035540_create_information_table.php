@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             
             $table->string('telefono');
-            $table->string('facebook');
-            $table->string('instagram');
-            $table->string('twitter');
-            $table->string('imagen');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitter')->nullable();
             $table->string('descripcion');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

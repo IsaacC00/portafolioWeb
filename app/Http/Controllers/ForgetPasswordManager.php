@@ -9,6 +9,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rules\Password as PasswordRules;
+
 
 class ForgetPasswordManager extends Controller
 {
@@ -62,7 +64,10 @@ class ForgetPasswordManager extends Controller
    {
         $request->validate([
             'email'=>'required|email|exists:users,email',
-            'password'=>'required|min:4|confirmed',
+            'password'=>['required',
+            'confirmed',
+            PasswordRules::min(8)->numbers()->symbols()->letters(),
+        ],
             'password_confirmation'=>'required'
         ]);
 

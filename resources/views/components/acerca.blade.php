@@ -2,7 +2,7 @@
 
 <div class="">
 
-    <div class=" h-full w-full bg-black">
+    <div class=" h-full w-full bg-black ">
         <img class="pt-24" src="{{asset('img/banner-superio-web.gif')}}" alt="">
     </div>
 
@@ -16,61 +16,21 @@
         </div>
         <div class="col-span-1 bg-orange-500 flex flex-col">
             <p class=" font-semibold text-base text-white text-center p-5 ">
-            @if($information)
-                {{ $information->descripcion}}
-                @else
-                no existe informacion
-                @endif
+                {{ $information->descripcion ? $information->descripcion : 'no existe información' }}
             </p>    
         </div>
     </div>
-    {{--
-    <div
-        class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 border-solid border-[18px] border-black drop-shadow-xl sm:order-1 lg:order-2">
-        {{-- @if ($information && $information->imagen)
-        <!-- Si $information no es null y tiene una imagen, mostrar esta imagen -->
-        <img class="" src="{{ asset('perfiles/' . $information->imagen) }}" alt="Imagen perfil" />
-        @else
-        <!-- Si $information es null o no tiene imagen, mostrar imagen por defecto -->
-        <img src="{{ asset('img/person.jpg') }}" alt="Imagen Default">
-        @endif
-    </div> --}}
-    {{--
-    <div
-        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:pt-10 pt-8 items-center text-center">
 
-        <h1 class="title-font sm:text-6xl leading-6 text-3xl mb-4 font-bold text-white">
-            <span class="text-orange-500">
-                Arq.
-            </span>
-            Ramiro Pantoja
-        </h1>
-        <p class=" title-font sm:text-3xl text-xl mb-4 font-bold text-white ">
-            <span id="element"></span>
-        </p>
-        <p class="mb-8 text-slate-200">
-            @if($information)
-            {{ $information->descripcion}}
-
-            @else
-            no ha informacion
-
-            @endif
-        </p>
-
-    </div> --}}
-
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 flex-row justify-center items-center px-10 lg:px-28 my-16">
-        <div class="col-span-1 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 flex-row justify-center items-center px-10 lg:px-28 my-16">
+        <div class="col-span-1 flex items-center justify-center">
             <img class="" src="{{asset('img/proceso-arquitectura.gif')}}" alt="">
         </div>
         <div class="col-span-1 ">
-            <h1 class=" text-2xl lg:text-3xl font-bold lg:mx-auto my-8">
+            <h1 class="text-center text-2xl lg:text-3xl font-bold lg:mx-auto my-8">
                 ¿Qué es proyecto
                 LLAVE EN MANO ?
             </h1>
-            <div class="text-base text-justify lg:text-lg text-zinc-600">
+            <div class="text-base text-justify lg:text-lg text-zinc-600 mx-auto px-4">
                 <p class="">
                     Un proyecto llave en mano representa un enfoque integral que abarca desde la concepción inicial
                     hasta su
@@ -99,7 +59,7 @@
 
         <span class="relative text-white transition duration-300 group-hover:text-green-600  ease">
             <a target="_blank"
-                href="https://api.whatsapp.com/send?phone=+54{{ $information ? $information->telefono : '0000000000' }}}&text=Estoy+interesado%2Fa+en+obtener+una+cotizaci%C3%B3n+para+un+proyecto.+Agradecer%C3%ADa+que+me+contacte+a+su+conveniencia+para+discutir+los+detalles+y+servicios+relacionados.">
+                href="https://api.whatsapp.com/send?phone=+593{{ $information ? $information->telefono : '0000000000' }}}&text=Estoy+interesado%2Fa+en+obtener+una+cotizaci%C3%B3n+para+un+proyecto.+Agradecer%C3%ADa+que+me+contacte+a+su+conveniencia+para+discutir+los+detalles+y+servicios+relacionados.">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
                     class="bi bi-whatsapp" viewBox="0 0 16 16">
                     <path

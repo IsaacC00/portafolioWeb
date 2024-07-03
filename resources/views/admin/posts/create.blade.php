@@ -1,8 +1,16 @@
 @extends('layouts.back')
 
 @section('cuerpo')
+<section>
+<div class="container px-5  mx-auto ">
+    <div class="flex flex-col text-center w-full mb-12">
+        <h2 class="sm:text-4xl text-3xl font-bold title-font mb-4 text-black">Crear Proyecto</h2>
+    </div>
+</div>
 
 <div class="md:flex md:justify-center md:gap-10 md:items-center ">
+
+    
 
     <div class="md:w-11/12 bg-white p-5 rounded-lg shadow-xl ">
         
@@ -97,20 +105,17 @@
             </div> 
 
             <div class="my-6">
-                <label for="extract" class="mb-5 block text-gray-500 font-bold text-lg ">
-                    Extracto
+                <label for="portada" class="mb-5 block text-gray-500 font-bold text-lg ">
+                    Portada proyecto
                 </label>
-                <input 
-                id="extract" 
-                name="extract" 
-                type="text" 
                 
-                placeholder="Pequeña descripción del proyecto" 
-                class="border border-zinc-400 text-base p-3 w-full rounded-lg @error('extract')
-                @enderror"
-                value="{{ old('extract') }}"
+                <input 
+                id="portada" 
+                name="portada" 
+                type="file"     
+                class="cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
                 >
-                @error('extract')
+                @error('portada')
                     <p class="bg-red-500 text-white my-2 
                     rounded-lg text-sm p-2 text-center">{{$message}}</p>
                 @enderror
@@ -120,11 +125,12 @@
                 Detalles del proyecto
             </label>
 
-            <div class="trix-content text-base font-normal">
-                <input id="bodyInput" value="{{ old('body') }}" type="hidden" name="body">
-                <trix-editor input="bodyInput"></trix-editor>
-            </div>
-          
+            <textarea  
+            name="body" 
+            id="body"  
+            class="my-4 text-base border p-3 w-full rounded-lg h-24 font-normal"
+            >{{ old('body') }}</textarea>
+
             @error('body')
                 <p class="bg-red-500 text-white my-2 
                 rounded-lg text-sm p-2 text-center">{{$message}}</p>
@@ -141,10 +147,11 @@
     </div>
 </div>    
 
+</section>
+
 @endsection
 
 @push('js')
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
     @vite('resources/js/imageUpload.js')
 @endpush
 

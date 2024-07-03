@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="flex flex-col min-h-screen">
 
-<head class="backdrop-brightness-50">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,7 +10,7 @@
     @vite('resources/js/app.js')
 
 </head>
-
+{{-- clases para mantener el footer en su lugar  --}}
 <body class="flex flex-col flex-1">
 
     <header class="">
@@ -23,7 +23,7 @@
 
     </div>
 
-    <footer class="bg-zinc-900">
+    <footer class="bg-zinc-900 ">
         <div class="px-5 py-6 xl:max-w-maxw m-auto text-center text-slate-400 text-sm">
             Copyrights ©{{ //objeto de fechas de blade para imprimir fechas
             now()->year }} | Todos los Derechos Reservados.

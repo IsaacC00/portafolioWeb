@@ -32,25 +32,17 @@ class InformationController extends Controller
     {
 
         $request->validate([
-            'telefono' => 'required|numeric',
-            'facebook' => 'required|max:30',
-            'instagram' => 'required|max:30',
-            'twitter' => 'required|max:30',
-            'descripcion' => 'required|max:240',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+            'telefono' => 'required|numeric|regex:/^09\d{8}$/',
+            'facebook' => 'max:30',
+            'instagram' => 'max:30',
+            'twitter' => 'max:30',
+            'descripcion' => 'max:240',
         ]);
 
+        
         if (Information::where('user_id', auth()->id())->exists()) {
             return redirect()->back()->with('info', 'Ya tienes un registro existente.');
         }
-
-        $imagen = $request->file('imagen');
-        $nombreImagen = Str::uuid() . "." . $imagen->extension();
-
-        $imagenServidor = Image::make($imagen);
-        $imagenServidor->fit(1000, 1000);
-
-        $imagenServidor->save(public_path('perfiles') . '/' . $nombreImagen);
 
         $information = new Information();
         $information->telefono = $request->telefono;
@@ -58,7 +50,6 @@ class InformationController extends Controller
         $information->instagram = $request->instagram;
         $information->twitter = $request->twitter;
         $information->descripcion = $request->descripcion;
-        $information->imagen = $nombreImagen; // Guardar ruta de la imagen
         $information->save();
 
         return redirect()->route('admin.user')->with('info', 'Información agregada con éxito');
@@ -85,32 +76,12 @@ class InformationController extends Controller
     public function update(Request $request, Information $user)
     {    
         $request->validate([
-            'telefono' => 'required|numeric',
-            'facebook' => 'required|max:30',
-            'instagram' => 'required|max:30',
-            'twitter' => 'required|max:30',
-            'descripcion' => 'required|max:240',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+            'telefono' => 'required|numeric|regex:/^09\d{8}$/',
+            'facebook' => 'max:30',
+            'instagram' => 'max:30',
+            'twitter' => 'max:30',
+            'descripcion' => 'max:240'
         ]);
-        if ($request->hasFile('imagen')) {
-
-            $imagen = $request->file('imagen');
-            $nombreImagen = Str::uuid() . "." . $imagen->extension();
-
-            $imagenServidor = Image::make($imagen);
-            $imagenServidor->fit(1000, 1000);
-
-            $imagenServidor->save(public_path('perfiles') . '/' . $nombreImagen);
-            $imagePath = public_path('perfiles') . '/' . $user->imagen;
-
-            // Si es necesario, elimina la imagen anterior
-            if ($user->imagen && File::exists($imagePath)) {
-                File::delete($imagePath);
-            }
-
-            // Actualizar la ruta de la imagen solo si se sube una nueva
-            $user->imagen = $nombreImagen;
-        }
 
         // Actualizar los demás campos
         $user->telefono = $request->telefono;
@@ -121,7 +92,7 @@ class InformationController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.user')->with('info', 'Información editada con éxito');
+        return redirect()->route('admin.user')->with('info', 'Información actualizada con éxito');
     }
 
     /**

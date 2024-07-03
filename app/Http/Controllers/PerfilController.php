@@ -6,7 +6,7 @@ use App\Models\Information;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Validation\Rules\Password as PasswordRules;
 
 class PerfilController extends Controller
 {
@@ -35,7 +35,11 @@ class PerfilController extends Controller
 
         if($request->oldpassword || $request->password) {
             $this->validate($request, [
-                'password' => 'required|confirmed',
+                'password' => [
+                    'required',
+                    'confirmed',
+                    PasswordRules::min(8)->numbers()->symbols()->letters(),
+                ],
             ]);
  
             if (Hash::check($request->oldpassword, auth()->user()->password)) {

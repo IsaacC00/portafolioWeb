@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,7 +21,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::paginate(4);
+        $testimonials = Testimonial::orderBy('id','desc')->paginate(6);
         return view('admin.testimonials.index', compact('testimonials'));
     }
 
@@ -41,14 +42,20 @@ class TestimonialController extends Controller
             'testimonio' => 'required|max:255',
             'nombre_testimonio' => 'max:100',
             'cargo_testimonio' => 'max:100',
-            'imagen' => 'max:1024'
-            
+            'imagen' => 'max:1024000'
+
         ]);
 
+        $extensions = ['jpeg','png','jpg'];
         // Procesar la imagen solo si se sube una
         if ($request->hasFile('imagen')) {
 
             $imagen = $request->file('imagen');
+            
+            if (!in_array($imagen->extension(), $extensions)) {
+                return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+            }
+
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             $imagenServidor = Image::make($imagen);
             $imagenServidor->resize(500, null, function ($constraint) {
@@ -88,23 +95,29 @@ class TestimonialController extends Controller
             'testimonio' => 'required',
             'nombre_testimonio' => 'max:100',
             'cargo_testimonio' => 'max:100',
-            'imagen' => 'image|max:1024'
+            'imagen' => 'image|max:1024000'
         ]);
+
+        $extensions = ['jpeg','png','jpg'];
 
         if ($request->hasFile('imagen')) {
 
             $imagen = $request->file('imagen');
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
-            
+
+            if (!in_array($imagen->extension(), $extensions)) {
+                return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+            }
+
             $imagenServidor = Image::make($imagen);
             $imagenServidor->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            
+
             $imagenServidor->save(public_path('clientes') . '/' . $nombreImagen);
-            
+
             $imagePath = public_path('clientes') . '/' . $testimonial->imagen;
-            
+
             // Si es necesario, elimina la imagen anterior
             if ($testimonial->imagen && File::exists($imagePath)) {
                 File::delete($imagePath);
@@ -112,7 +125,7 @@ class TestimonialController extends Controller
             $validatedData['imagen'] = $nombreImagen;
         }
 
-        
+
 
         $testimonial->update($validatedData);
         return redirect()->route('admin.testimonials.edit', $testimonial)->with('info', 'Datos actualizados con éxito');

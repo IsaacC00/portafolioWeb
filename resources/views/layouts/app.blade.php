@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" class="!scroll-smooth">
+<html lang="es" class="!scroll-smooth" >
 
-<head class="backdrop-brightness-50">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,15 +11,9 @@
     @vite('resources/js/app.js')
     {!!htmlScriptTagJsApi()!!}
 
-    <style>
-        .swiper {
-            width: 600px;
-            height: 300px;
-        }
-    </style>
 </head>
 
-<body class="">
+<body> 
 
     <header class="header">
         <x-navegacion :information="$information" />

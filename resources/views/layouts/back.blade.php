@@ -11,7 +11,7 @@
     @vite('resources/js/menu.js')
 </head>
 
-<body>
+<body class="">
 
     <div class="relative min-h-screen md:flex">
 

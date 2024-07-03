@@ -87,9 +87,7 @@ class PostController extends Controller
             foreach ($request->file('images') as $image) {
 
                 // Redimensionar la imagen
-                $img = Image::make($image)->resize(960, 1240, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                $img = Image::make($image)->resize(960, 1240);
 
                 // Guardar la imagen recortada en el almacenamiento local
                 $fileName = $image->hashName();
@@ -100,6 +98,7 @@ class PostController extends Controller
                 $post->images()->create(['image_path' => 'projects/' . $fileName]);
             }
         }
+        
         return redirect()->route('admin.posts.edit', $post)->with('info','Proyecto editado con éxito');
     }
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -82,6 +83,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $defaultCategoryId = 1;
+
+        if ($category->id == $defaultCategoryId) {
+            return back()->with('mensaje','No se puede eliminar esa categoría');
+        }
+
+        // Reasignar posts a la categoría por defecto
+        Post::where('category_id', $category->id)->update(['category_id' => $defaultCategoryId]);
+
         $category->delete();
         return redirect()->route('admin.categories.index')->with('info','Datos actualizados con exito');
     }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->text('testimonio');
-            $table->string('nombre_testimonio');
-            $table->string('cargo_testimonio');
+            $table->string('nombre_testimonio')->nullable();
+            $table->string('cargo_testimonio')->nullable();
             $table->string('imagen')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

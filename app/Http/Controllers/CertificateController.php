@@ -19,7 +19,7 @@ class CertificateController extends Controller
      */
     public function index()
     {
-        $certificates = Certificate::orderBy('id','desc')->paginate(4);
+        $certificates = Certificate::orderBy('id','desc')->paginate(6);
         return view('admin.services.index',compact('certificates'));
     }
 
@@ -40,13 +40,21 @@ class CertificateController extends Controller
         $validatedData = $request->validate([
             'nombre_servicio'=>'required|max:240',
             'desc_servicio'=>'required|max:240',
-            'imagen' => 'image|max:1024'
+            'imagen' => 'image|max:1024000'
         ]);
+
+        $extensions = ['jpeg','png','jpg'];
+        
         
         // Procesar la imagen solo si se sube una
         if ($request->hasFile('imagen')) {
             
             $imagen = $request->file('imagen');
+
+            if (!in_array($imagen->extension(), $extensions)) {
+                return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+            }
+
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             $imagenServidor = Image::make($imagen);
             $imagenServidor->resize(200, null, function ($constraint) {
@@ -85,12 +93,19 @@ class CertificateController extends Controller
         $validatedData = $request->validate([
             'nombre_servicio'=>'required|max:240',
             'desc_servicio'=>'required|max:240',
-            'imagen' => 'image|max:1024'
+            'imagen' => 'image|max:1024000'
         ]);
+
+        $extensions = ['jpeg','png','jpg'];
         
         if ($request->hasFile('imagen')) {
 
             $imagen = $request->file('imagen');
+
+            if (!in_array($imagen->extension(), $extensions)) {
+                return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+            }
+
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             
             $imagenServidor = Image::make($imagen);

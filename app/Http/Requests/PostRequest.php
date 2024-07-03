@@ -29,7 +29,6 @@ class PostRequest extends FormRequest
     
         if ($this->status == 2) {
             $rules = array_merge($rules, [
-                'extract' => 'required|max:255',
                 'body' => 'required',   
                 'images' => 'required',
                 'images.*' => 'required|mimes:jpeg,png,jpg|max:2048',

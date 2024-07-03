@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('extract')->nullable();
+            $table->string('portada')->nullable();
             $table->text('body')->nullable();
 
             $table->enum('status',[1,2])->default(1);
