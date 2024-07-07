@@ -49,8 +49,8 @@
         <span class="group relative ">
             <div
                 class="absolute bottom-[calc(100%+0.5rem)] left-[50%] -translate-x-[50%] hidden group-hover:block w-auto">
-                <div class="bottom-full right-0 rounded bg-black px-4 py-1 text-xs text-white whitespace-nowrap">
-                    Campo opcional.
+                <div class="bottom-full right-0 rounded bg-black px-4 py-1 text-xs text-white whitespace-nowrap text-center">
+                    Campo opcional <br> Imagen por defecto.
                     <svg class="absolute left-0 top-full h-2 w-full text-black" x="0px" y="0px" viewBox="0 0 255 255"
                         xml:space="preserve">
                         <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
@@ -63,9 +63,15 @@
 
         {{-- Toltip --}}
     </div>
-    <div class="my-4">
-        {!! Form::file('imagen', ['class'=>'cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block']) !!}
+    
+    <div class="border border-slate-200 w-28">
+        <img id="preview" src="{{ asset('servicios').'/'.'iconService.png'}}" class="h-auto mx-auto my-6">
     </div>
+
+    <div class="my-4">
+        {!! Form::file('imagen', [ 'id'=>'imagePreview','class'=>'cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block']) !!}
+    </div>
+
     @error('imagen')
     <p class="bg-red-500 text-white my-2 
                         rounded-lg text-sm p-2 text-center">{{$message}}</p>
@@ -75,6 +81,22 @@
     cursor-pointer']) !!}
     {!! Form::close() !!}
 </div>
+
+<script>
+    document.getElementById('imagePreview').addEventListener('change', function(event) {
+        const input = event.target;
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            const dataURL = reader.result;
+            const output = document.getElementById('preview');
+            output.src = dataURL;
+            output.style.display = 'block';
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    });
+</script>
 
 
 @endsection

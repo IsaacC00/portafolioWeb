@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+
 
 class PostController extends Controller
 {
@@ -42,7 +44,7 @@ class PostController extends Controller
             foreach ($request->file('images') as $image) {
 
                 // Redimenzionar la imagen
-                $img = Image::make($image)->resize(961, 1240, function ($constraint) {
+                $img = Image::make($image)->resize(null, 1240, function ($constraint) {
                     $constraint->aspectRatio();
                 });
 
@@ -87,7 +89,10 @@ class PostController extends Controller
             foreach ($request->file('images') as $image) {
 
                 // Redimensionar la imagen
-                $img = Image::make($image)->resize(960, 1240);
+                $img = Image::make($image)->resize(null, 1240,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+            });
 
                 // Guardar la imagen recortada en el almacenamiento local
                 $fileName = $image->hashName();
@@ -107,6 +112,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        if($post->images->isNotEmpty()){
+            foreach ($post->images as $image) {
+                
+                $imagePath = $image->image_path;
+                
+                if ( File::exists($imagePath) ){
+                    File::delete($imagePath);
+                }
+
+                $image->delete();
+
+            }
+        }
+
         $post->delete();
         return redirect()->route('admin.posts.index')->with('info', 'Lista actualizada con éxito');
     }

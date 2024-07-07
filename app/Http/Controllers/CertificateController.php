@@ -57,7 +57,7 @@ class CertificateController extends Controller
 
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             $imagenServidor = Image::make($imagen);
-            $imagenServidor->resize(200, null, function ($constraint) {
+            $imagenServidor->resize(62, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imagenServidor->save(public_path('servicios') . '/' . $nombreImagen);
@@ -109,7 +109,7 @@ class CertificateController extends Controller
             $nombreImagen = Str::uuid() . "." . $imagen->extension();
             
             $imagenServidor = Image::make($imagen);
-            $imagenServidor->resize(200,null, function ($constraint) {
+            $imagenServidor->resize(62,null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $imagenServidor->save(public_path('servicios') . '/' . $nombreImagen);
@@ -133,6 +133,13 @@ class CertificateController extends Controller
      */
     public function destroy(Certificate $service)
     {
+        $imageName = $service->imagen;
+        $imagePath = public_path('servicios/'.$imageName);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
         $service->delete();
         return redirect()->route('admin.services.index')->with('info','Datos actualizados con éxito');
     }

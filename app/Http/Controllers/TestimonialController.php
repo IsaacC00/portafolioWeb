@@ -136,7 +136,17 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
+        
+        $imageName = $testimonial->imagen;
+        
+        $imagePath = public_path('clientes/'.$imageName);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
         $testimonial->delete();
+        
         return redirect()->route('admin.testimonials.index')->with('info', 'Datos actualizados con éxito');
     }
 }

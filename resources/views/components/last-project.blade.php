@@ -7,7 +7,7 @@
             Proyecto más reciente</h2>
     </div>
 
-    <divo class="container bg-cover bg-center  bg-fixed cursor-pointer"
+    <div class="container bg-cover bg-center  bg-fixed cursor-pointer"
         style="background-image: url({{asset('img/latestPro.png')}})"
         onclick="window.location.href='{{ route('home.show',$last->id)}}'">
         <div class="bg-black bg-opacity-50 lg:mx-auto py-44 px-10 lg:px-52 ">
@@ -35,5 +35,5 @@
             </div>
         </div>
 
-    </divo>
+    </div>
 </div>

@@ -74,7 +74,7 @@
                                     </svg>
                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">¿Está seguro
                                         que desea eliminar
-                                        este testimonio? : {{$row->nombre_testimonio ? $row->nombre_testimonio : 'Anónimo'}} <br> {{$row->cargo_testimonio ? $row->cargo_testimonio : substr($row->testimonio, 0 ,70 ) }}
+                                        este testimonio? : {{$row->nombre_testimonio ? $row->nombre_testimonio : 'Anónimo'}} <br> {{$row->cargo_testimonio ? $row->cargo_testimonio : substr($row->testimonio, 0 ,70 ) }}.....
                                     </h3>
                                     <div class=" flex flex-row items-center justify-center">
                                         <form action="{{route('admin.testimonials.destroy',$row->id)}}" method="POST" >

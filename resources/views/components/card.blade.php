@@ -8,7 +8,7 @@
     </div>
     <div class="absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all ">
         <h1 class="text-2xl text-white font-bold mb-28">{{$post->name}}</h1>
-        <p class="text-lg italic text-white mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{{substr ($post->body, 0 , 120) }}</p>
+        <p class="text-lg italic text-white mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{{substr ($post->body, 0 , 120) }}...</p>
         <a class="rounded-full shadow shadow-black/60 bg-orange-700 py-2 px-3.5 text-sm capitalize text-white "
             href="{{ route('home.show',$post)}}">Ver proyecto </a>
     </div>

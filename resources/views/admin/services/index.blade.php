@@ -44,7 +44,7 @@
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <td class="px-6 py-4">
-                    <img alt=""
+                    <img alt="{{$row->nombre_servicio}}"
                         src="{{ $row->imagen?  asset('servicios'.'/'.$row->imagen) : asset('servicios'.'/'.'iconService.png') }}"
                         class="size-8 rounded-full object-cover" />
                 </td>

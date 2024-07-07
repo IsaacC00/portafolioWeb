@@ -105,17 +105,19 @@
             </div> 
 
             <div class="my-6">
-                <label for="portada" class="mb-5 block text-gray-500 font-bold text-lg ">
-                    Portada proyecto
+                <label for="video" class="mb-5 block text-gray-500 font-bold text-lg ">
+                    Video proyecto
                 </label>
                 
                 <input 
-                id="portada" 
-                name="portada" 
-                type="file"     
-                class="cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+                id="video" 
+                name="video" 
+                type="text"     
+                class="border-zinc-400 text-base border p-3 w-full rounded-lg @error('video') 
+                @enderror"
+                value="{{ old('video') }}"
                 >
-                @error('portada')
+                @error('video')
                     <p class="bg-red-500 text-white my-2 
                     rounded-lg text-sm p-2 text-center">{{$message}}</p>
                 @enderror

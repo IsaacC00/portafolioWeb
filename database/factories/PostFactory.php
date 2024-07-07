@@ -20,7 +20,6 @@ class PostFactory extends Factory
         $name = $this->faker->unique()->sentence();
         return [
             'name'=>$name,
-            'extract'=>$this->faker->text(250),
             'body'=>$this->faker->text(500),
             'status'=>$this->faker->randomElement([1,2]),
             'category_id'=>Category::all()->random()->id,

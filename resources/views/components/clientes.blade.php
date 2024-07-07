@@ -19,8 +19,7 @@
                 </h2>
 
                 <p class="mt-4 text-zinc-800">
-                    No solo confíes en lo que nosotros decimos, descubre por ti mismo la experiencia de nuestros
-                    clientes satisfechos y sus historias de éxito !!!
+                    Descubre por ti mismo las experiencias y éxitos de nuestros clientes satisfechos. !!!
                 </p>
 
                 <div class="hidden lg:mt-8 lg:flex lg:gap-4">
@@ -54,8 +53,8 @@
                                     class="size-14 rounded-full object-cover" />
     
                                 <div>
-                                    <div class=" flex flex-col justify-center text-green-500">
-                                        <p class="text-2xl font-bold text-rose-600 sm:text-3xl">{{$row->cargo_testimonio ? $row->cargo_testimonio : 'Anónimo'}}</p>
+                                    <div class=" flex flex-col justify-center text-zinc-500">
+                                        <p class="text-2xl font-bold text-black sm:text-3xl">{{$row->cargo_testimonio ? $row->cargo_testimonio : 'Anónimo'}}</p>
                                         &mdash; {{$row->nombre_testimonio ? $row->nombre_testimonio : 'Anónimo'}}
                                     </div>
     

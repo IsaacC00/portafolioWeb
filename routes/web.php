@@ -69,7 +69,9 @@ Route::resource('user',InformationController::class)->names('admin.user');
 // Informacion Usuario
 
 // Eliminar Imagen
-Route::get('/image/delete/{id}', [ImageController::class, 'deleteImage'])->name('image.delete');
+Route::get('/image/delete/{id}', [ImageController::class, ('deleteImage')])->name('image.delete');
+Route::get('/image/delete-service/{id}', [ImageController::class, ('dltImgService')])->name('image.delete.service');
+Route::get('/image/delete-testimonio/{id}', [ImageController::class, ('dltImgTestimonio')])->name('image.delete.testimonio');
 // Eliminar Imagen
 
 Route::get('/user-edit',[PerfilController::class,('index')])->name('admin.user');

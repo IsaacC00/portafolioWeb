@@ -116,8 +116,11 @@
 
         {{-- Toltip --}}
     </div>
+    <div>
+        <x-image-testimonial :testimonial="$testimonial" />
+    </div>
     <div class="my-4">
-        {!! Form::file('imagen', ['class'=>'cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block']) !!}
+        {!! Form::file('imagen', ['id'=>'imagePreview','class'=>'cursor-pointer max-w-72 lg:max-w-2xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block']) !!}
     </div>
     @error('imagen')
     <p class="bg-red-500 text-white my-2 
@@ -129,7 +132,21 @@
     {!! Form::close() !!}
 </div>
 
+<script>
+    document.getElementById('imagePreview').addEventListener('change', function(event) {
+        const input = event.target;
+        const reader = new FileReader();
 
+        reader.onload = function() {
+            const dataURL = reader.result;
+            const output = document.getElementById('preview');
+            output.src = dataURL;
+            output.style.display = 'block';
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    });
+</script>
 
 
 @endsection

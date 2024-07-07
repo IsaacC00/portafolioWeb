@@ -13,11 +13,11 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        $posts=Post::factory(30)->create()->each(function ($post) {
-            // Para cada post, crear entre 1 y 5 imágenes
-            Image::factory(rand(5, 10))->create(['post_id' => $post->id]);
-        });
+        $posts=Post::factory(30)->create();
+        // $posts=Post::factory(30)->create()->each(function ($post) {
+        //     // Para cada post, crear entre 1 y 5 imágenes
+        //     Image::factory(rand(5, 10))->create(['post_id' => $post->id]);
+        // });
 
     }
 }
