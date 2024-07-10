@@ -5,7 +5,7 @@
     <div class="flex flex-col justify-start">
 
         <div class=" border border-slate-200 w-28">
-            <img src="{{ asset('clientes').'/'.$testimonial->imagen}}" class="h-auto mx-auto my-2"
+            <img id="preview" src="{{ asset('clientes').'/'.$testimonial->imagen}}" class="h-auto mx-auto my-2"
                 alt="{{$testimonial->nombre_testimonio}}">
         </div>
         

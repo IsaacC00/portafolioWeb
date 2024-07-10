@@ -4,7 +4,7 @@
     <div class="flex flex-col justify-start">
 
         <div class=" border border-slate-200 w-28">
-            <img src="{{ asset('servicios').'/'.$service->imagen}}" class="h-auto mx-auto my-6"
+            <img id="preview" src="{{ asset('servicios').'/'.$service->imagen}}" class="h-auto mx-auto my-6"
                 alt="{{$service->nombre_servicio}}">
         </div>
 

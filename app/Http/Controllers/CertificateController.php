@@ -38,7 +38,7 @@ class CertificateController extends Controller
     {
         
         $validatedData = $request->validate([
-            'nombre_servicio'=>'required|max:240',
+            'nombre_servicio'=>'required|max:240|unique:certificates,nombre_servicio,$service->id',
             'desc_servicio'=>'required|max:240',
             'imagen' => 'image|max:1024000'
         ]);
@@ -91,7 +91,7 @@ class CertificateController extends Controller
     {
 
         $validatedData = $request->validate([
-            'nombre_servicio'=>'required|max:240',
+            'nombre_servicio'=>'required|max:240|unique:certificates,nombre_servicio,$service->id',
             'desc_servicio'=>'required|max:240',
             'imagen' => 'image|max:1024000'
         ]);

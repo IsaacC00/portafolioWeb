@@ -5,7 +5,7 @@
     <div class="relative">
         <img src="{{ asset('img/banner.png') }}" alt="Banner" class="w-full h-auto">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
-            <h1 class="text-3xl lg:text-5xl font-bold uppercase text-center text-white">{{$post->name}}</h1>
+            <h1 class="text-3xl lg:text-5xl font-bold uppercase text-center text-white">Proyecto {{$post->category->name.' : '.$post->name}}</h1>
         </div>
     </div>
 

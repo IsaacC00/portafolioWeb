@@ -152,7 +152,7 @@
                     rounded-lg text-sm p-2 text-center">{{$message}}</p>
     @enderror
 
-    {!! Form::submit('Actualizar Información', ['class'=>'font-bold bg-purple-600 rounded-md text-sm text-white p-2.5 cursor-pointer']) !!}
+    {!! Form::submit('Actualizar Información', ['class'=>'mt-5 font-bold bg-purple-600 rounded-md text-sm text-white p-2.5 cursor-pointer']) !!}
     {!! Form::close() !!}
 </div>
 

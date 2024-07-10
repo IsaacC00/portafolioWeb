@@ -9,10 +9,10 @@
                         Telefono
                     </th>
                     <th scope="col" class="px-6 py-5">
-                        Twitter(X)
+                        Facebook
                     </th>
                     <th scope="col" class="px-6 py-5">
-                        Facebook
+                        Twitter(X)
                     </th>
                     <th scope="col" class="px-6 py-5">
                         Instagram

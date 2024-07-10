@@ -20,7 +20,7 @@
                           <h5 class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-black">
                             {{$row->nombre_servicio}}
                           </h5>
-                          <p class="block font-sans text-base antialiased font-light leading-relaxed text-justify">
+                          <p class="block font-sans text-base antialiased font-light leading-relaxed text-center">
                             {{$row->desc_servicio}}
                           </p>
                         </div>

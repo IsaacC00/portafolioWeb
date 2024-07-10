@@ -16,7 +16,7 @@
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70 "></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all ">
-                    <h1 class="text-2xl text-white font-bold mb-28">{!! $post->name !!}</h1>
+                    <h1 class="text-2xl text-white font-bold mb-28">Proyecto {{ $post->category->name.' : '.$post->name}}</h1>
                     <p class="text-lg italic text-white mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{{substr ($post->body, 0 , 120)}}...</p>
                     <a class="rounded-full shadow shadow-black/60 bg-orange-700 py-2 px-3.5 text-sm capitalize text-white " href="{{ route('home.show',$post)}}">Ver proyecto </a>
                 </div>         
@@ -41,6 +41,13 @@
             </span>
             <span class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Más proyectos</span>
             </a>
+    </div>
+
+    <div class="flex flex-col text-center w-full my-20">
+        <h2
+        class="sm:text-4xl text-2xl font-bold underline decoration-orange-500 decoration-4 underline-offset-8 text-black">
+        Compromiso y Excelencia: Proyecto Insignia
+    </h2>
     </div>
 
     {{-- video --}}

@@ -37,7 +37,7 @@ class CategoryController extends Controller
     {
         //validar informacion 
         $request->validate([
-                'name'=>'required',
+                'name'=>['required', 'regex:/^[a-zA-Z0-9\s]*$/'],
                 'slug'=>'required|unique:categories'
             ]);
 
@@ -58,6 +58,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $defaultCategoryId = 1;
+        if ($category->id == $defaultCategoryId) {
+            return back();
+        }
         return view('admin.categories.edit',compact('category'));
     }
 
@@ -68,7 +72,7 @@ class CategoryController extends Controller
     {
          //validar informacion 
         $request->validate([
-            'name'=>'required',
+            'name'=>['required', 'regex:/^[a-zA-Z0-9\s]*$/'],
             'slug'=>"required|unique:categories,slug,$category->id"
         ]);
 

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\PostUpdateRequest;
 
 
 class PostController extends Controller
@@ -39,9 +40,15 @@ class PostController extends Controller
     {
 
         $post = Post::create($request->all());
+
+        $extensions = ['jpeg','png','jpg'];
       
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
+
+                if (!in_array($image->extension(), $extensions)) {
+                    return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+                }
 
                 // Redimenzionar la imagen
                 $img = Image::make($image)->resize(null, 1240, function ($constraint) {
@@ -56,6 +63,7 @@ class PostController extends Controller
                 $post->images()->create(['image_path' => 'projects/' . $fileName]);
             }
         }
+        
         return redirect()->route('admin.posts.edit', $post)->with('info','Proyecto creado con éxito');
     }
 
@@ -81,12 +89,20 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
         $post->update($request->all());
-
+       
+        $extensions = ['jpeg','png','jpg','gif'];
+       
         if ($request->hasFile('images')) {
+
+            
             foreach ($request->file('images') as $image) {
+
+                if (!in_array($image->extension(), $extensions)) {
+                    return back()->with('message', 'Solo se pueden subir imágenes en formato JPEG, JPG o PNG');
+                }
 
                 // Redimensionar la imagen
                 $img = Image::make($image)->resize(null, 1240,

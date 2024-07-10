@@ -50,7 +50,7 @@
         {{-- Toltip --}}
     </div>
     {!! Form::text('nombre_testimonio', null, ['class'=>'my-4 text-base border p-3 w-full
-    rounded-lg','placeholder'=>'Ejm. Ing. Edison Almeida']) !!}
+    rounded-lg','placeholder'=>'Ing. Edison Almeida','autocomplete'=>'off']) !!}
     @error('nombre_testimonio')
     <p class="bg-red-500 text-white my-2 
             rounded-lg text-sm p-2 text-center">{{$message}}</p>
@@ -79,7 +79,7 @@
         {{-- Toltip --}}
     </div>
     {!! Form::text('cargo_testimonio', null, ['class'=>'my-4 text-base border p-3 w-full
-    rounded-lg','placeholder'=>'Ejm. Gerente de recursos finacieros']) !!}
+    rounded-lg','placeholder'=>'Gerente de recursos finacieros','autocomplete'=>'off']) !!}
     @error('cargo_testimonio')
     <p class="bg-red-500 text-white my-2 
             rounded-lg text-sm p-2 text-center">{{$message}}</p>

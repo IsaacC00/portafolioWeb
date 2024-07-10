@@ -35,7 +35,7 @@
         {{-- sidebar --}}
         <div
             class="sidebar bg-gray-800 text-white w-64 space-y-6 p-7 px-4 absolute 
-        inset-y-0 left-0 transform-translate-x-full md:translate-x-0  md:relative transition duration-200 ease-in-out ">
+        inset-y-0 left-0 transform-translate-x-full md:translate-x-0  md:relative transition duration-200 ease-in-out z-10">
 
             <h1 href="" class="text-white flex items-center space-x-2">
 

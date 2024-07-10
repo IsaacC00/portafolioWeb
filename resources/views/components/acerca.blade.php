@@ -2,8 +2,10 @@
 
 <div class="">
 
-    <div class=" h-full w-full bg-black ">
-        <img class="pt-24" src="{{asset('img/banner-superio-web.gif')}}" alt="">
+    <div class=" bg-black">
+            <div class="">
+                <img class="h-full w-full pt-24" src="{{asset('img/banner-superio-web.gif')}}" alt="">
+            </div>  
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2">
@@ -15,7 +17,7 @@
 
         </div>
         <div class="col-span-1 bg-orange-500 flex flex-col">
-            <p class=" font-semibold text-base text-white text-center p-5 ">
+            <p class="flex flex-wrap font-semibold text-base text-white text-center p-5 justify-center items-center">
                 {{ $information->descripcion ? $information->descripcion : 'no existe información' }}
             </p>    
         </div>

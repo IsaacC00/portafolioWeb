@@ -23,17 +23,19 @@ class PostRequest extends FormRequest
     {
         $regex = '/^https:\/\/player\.vimeo\.com\/video\/\d+/';
         $rules = [
-            'name' => 'required|max:100',
+            'name' => 'required|max:60',
             'status' => 'required|in:1,2',
             'category_id' => 'required',
+            'images' => 'sometimes|nullable',
+            'images.*' => 'sometimes|nullable|image|mimes:jpeg,png,jpg|max:3072000',
             'video'=>'nullable|sometimes|regex:'.$regex
         ];
     
         if ($this->status == 2) {
             $rules = array_merge($rules, [
                 'body' => 'required',   
-                'images' => 'required',
-                'images.*' => 'required|mimes:jpeg,png,jpg|max:2048000',
+                'images' =>'required',
+                'images.*' => ['required','image','mimes:jpeg,png,jpg','max:3072000',],
                 
             ]);
         }

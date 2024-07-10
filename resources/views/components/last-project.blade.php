@@ -13,7 +13,7 @@
         <div class="bg-black bg-opacity-50 lg:mx-auto py-44 px-10 lg:px-52 ">
 
             <div class="flex flex-row ">
-                <p class="text-white text-2xl font-bold mx-auto uppercase text-center ">{{$last ? $last->name : 'none'
+                <p class="text-white text-2xl font-bold mx-auto uppercase text-center ">{{$last ? $last->category->slug.' : '. $last->name : 'none'
                     }}
                 </p>
             </div>
@@ -21,8 +21,8 @@
                 @forelse ($images as $img)
                 <div class="col-span-1 group relative items-center justify-center overflow-hidden cursor-pointer">
                     <div class="h-full w-full">
-                        <div class="bg-cover bg-center h-80 group-hover:scale-125 duration-500" style="background-image: url({{asset($img->image_path )}})">
-                            <div class="p-20"></div>
+                        <div class="bg-cover bg-center h-full group-hover:scale-125 duration-500" style="background-image: url({{asset($img->image_path )}})">
+                            <div class="p-56"></div>
                         </div>
                     </div>
                 </div>

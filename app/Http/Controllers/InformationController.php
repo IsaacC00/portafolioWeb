@@ -33,9 +33,9 @@ class InformationController extends Controller
 
         $request->validate([
             'telefono' => 'required|numeric|regex:/^09\d{8}$/',
-            'facebook' => 'max:30',
-            'instagram' => 'max:30',
-            'twitter' => 'max:30',
+            'facebook' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
+            'instagram' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
+            'twitter' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
             'descripcion' => 'max:240',
         ]);
 
@@ -77,9 +77,9 @@ class InformationController extends Controller
     {    
         $request->validate([
             'telefono' => 'required|numeric|regex:/^09\d{8}$/',
-            'facebook' => 'max:30',
-            'instagram' => 'max:30',
-            'twitter' => 'max:30',
+            'facebook' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
+            'instagram' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
+            'twitter' => 'max:30|nullable|sometimes|regex:/^[^\s\/]*$/',
             'descripcion' => 'max:240'
         ]);
 

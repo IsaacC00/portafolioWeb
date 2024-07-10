@@ -48,7 +48,8 @@
                                 </th>
                                 <td class="px-6 py-4">
                                     @if ($row->status == 2)
-                                        Publico
+                                    <a href="{{route('home.show',$row->id)}}" target="_blank" class="text-green-600">Publicado</a>
+                                    
                                     @else
                                         En Edición 
                                     @endif
@@ -65,7 +66,7 @@
                                     <button type="submit" class="text-red-600" onclick="showDialog({{$row->id}})" > Eliminar </button>
                                     {{-- delete--}}
                                     <div id="dialog-{{ $row->id }}"
-                                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen flex justify-center items-center">
+                                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen flex justify-center items-center z-10">
                                         <div class="relative p-4 w-full max-w-md max-h-full">
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 
